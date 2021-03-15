@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "tamaosa-blog-v2",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "tamaosa's personal blog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Tamaosa",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/tamaosa/blogv2/issues"
   },
   "dependencies": {
     "gatsby": "^3.0.1",
@@ -35,15 +35,15 @@
   "devDependencies": {
     "prettier": "2.2.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/tamaosa/blogv2#readme",
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
+  "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/tamaosa/blogv2.git"
   },
   "scripts": {
     "build": "gatsby build",

@@ -1,17 +1,24 @@
-import * as React from "react"
+import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const BlogPostTemplate = ({ data, location }) => {
+type Props = {
+  data: {
+    markdownRemark: any
+    previous: any
+    next: any
+  }
+}
+
+const BlogPostTemplate: React.FC<Props> = ({ data }) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -72,11 +79,6 @@ export const pageQuery = graphql`
     $previousPostId: String
     $nextPostId: String
   ) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)

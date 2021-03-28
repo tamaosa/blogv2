@@ -7,14 +7,14 @@ import SEO from "../components/seo"
 
 type Props = {
   data: {
-    allMarkdownRemark: {
+    allMdx: {
       nodes: Array<any>
     }
   }
 }
 
 const BlogIndex: React.FC<Props> = ({ data }) => {
-  const posts = data.allMarkdownRemark.nodes
+  const posts = data.allMdx.nodes
 
   return (
     <Layout>
@@ -60,7 +60,7 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         excerpt
         fields {

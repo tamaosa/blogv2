@@ -19,11 +19,12 @@ const layoutStyle = css`
 `
 
 const headerStyle = css`
-  margin: ${rhythm(1 / 4)} 0;
+  margin-top: ${rhythm(1 / 4)};
 `
 const mainStyle = css`
   flex: 1;
-  margin: ${rhythm(1 / 4)} 0;
+  margin-top: ${rhythm(3 / 2)};
+  margin-bottom: ${rhythm(1 / 4)};
 `
 
 const footerStyle = css`

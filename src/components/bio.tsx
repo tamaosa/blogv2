@@ -26,7 +26,7 @@ const Bio: React.FC = () => {
       <StaticImage
         className="bio-avatar"
         layout="fixed"
-        src="../images/profile-pic.png"
+        src="../../content/images/avator.png"
         width={50}
         height={50}
         quality={95}

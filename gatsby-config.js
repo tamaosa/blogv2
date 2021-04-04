@@ -1,15 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `tamaosa.com`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `tamaosa`,
+      summary: `釣りと登山が好き。`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `tamaosa's blog!`,
+    siteUrl: `https://www.tamaosa.com`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `tamaosa11`,
+      github: `tamaosa`
     },
+    repository: `https://github.com/tamaosa/blogv2`
   },
   plugins: [
     `gatsby-plugin-emotion`,

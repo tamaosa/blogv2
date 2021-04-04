@@ -6,6 +6,7 @@ import Header from "./header"
 import Footer from "./footer"
 import { rhythm } from "../../utils/typography"
 import { contentWidth } from "../../utils/constants"
+import "../../utils/font-awesome"
 
 const layoutStyle = css`
   display: flex;

@@ -26,15 +26,15 @@ SOFTWARE. */
  *
  * Ported for PrismJS by Zane Hitchcoxc (@zwhitchcox) and Gabriel Ramos (@gabrieluizramos)
  *
- * Add "Kosugi Maru" to font-family by @tamaosa
+ * Change font-family by @tamaosa
  */
 
 code[class*="language-"],
 pre[class*="language-"] {
   color: #f8f8f2;
   background: none;
-  font-family: "Kosugi Maru", "Fira Code", Consolas, Monaco, "Andale Mono",
-    "Ubuntu Mono", monospace;
+  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo",
+    monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;

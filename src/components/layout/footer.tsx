@@ -20,7 +20,7 @@ const Footer: React.FC = () => (
     </div>
     <div css={copyrightStyle}>
       <small>
-        <Link to="/">About</Link> | © 2021 Tamaosa, Built with
+        <Link to="/">About</Link> | © 2019 Tamaosa, Built with
         {` `}
         <a href="https://www.gatsbyjs.com">Gatsby</a>
       </small>

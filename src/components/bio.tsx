@@ -5,6 +5,7 @@ import { css } from "@emotion/react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import { rhythm, scale } from "../utils/typography"
+import { SiteMetadata } from "../types/site-metadata"
 
 const BioStyle = css`
   display: flex;
@@ -31,7 +32,11 @@ const authorStyle = css`
 `
 
 const Bio: React.FC = () => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<{
+    site: {
+      siteMetadata: Pick<SiteMetadata, "author" | "social">
+    }
+  }>(graphql`
     query BioQuery {
       site {
         siteMetadata {

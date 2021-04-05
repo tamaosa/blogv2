@@ -3,11 +3,17 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Mdx } from "../types/mdx"
 
 type Props = {
   data: {
     allMdx: {
-      nodes: Array<any>
+      nodes: Array<
+        Pick<
+          Mdx<"title" | "published" | "updated" | "tags">,
+          "fields" | "frontmatter"
+        >
+      >
     }
   }
 }
@@ -29,22 +35,12 @@ const BlogIndex: React.FC<Props> = ({ data }) => {
                 itemScope
                 itemType="http://schema.org/Article"
               >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
+                <h2>
+                  <Link to={post.fields.slug} itemProp="url">
+                    <span itemProp="headline">{title}</span>
+                  </Link>
+                </h2>
+                <small>{post.frontmatter.published}</small>
               </article>
             </li>
           )
@@ -58,16 +54,15 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___published], order: DESC }) {
       nodes {
         excerpt
         fields {
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+          published(formatString: "YYYY/MM/DD")
           title
-          description
         }
       }
     }

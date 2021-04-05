@@ -76,7 +76,7 @@ module.exports = {
               return allMdx.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
-                  date: node.frontmatter.date,
+                  date: node.frontmatter.published,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
@@ -86,7 +86,7 @@ module.exports = {
             query: `
               {
                 allMdx(
-                  sort: { order: DESC, fields: [frontmatter___date] },
+                  sort: { order: DESC, fields: [frontmatter___published] },
                 ) {
                   nodes {
                     excerpt
@@ -96,7 +96,7 @@ module.exports = {
                     }
                     frontmatter {
                       title
-                      date
+                      published
                     }
                   }
                 }

@@ -12,7 +12,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       {
         allMdx(
-          sort: { fields: [frontmatter___date], order: ASC }
+          sort: { fields: [frontmatter___published], order: ASC }
           limit: 1000
         ) {
           nodes {
@@ -83,9 +83,12 @@ exports.createSchemaCustomization = ({ actions }) => {
   // blog posts are stored inside "content/blog" instead of returning an error
   createTypes(`
     type SiteSiteMetadata {
+      title: String
       author: Author
+      description: String
       siteUrl: String
       social: Social
+      repository: String
     }
 
     type Author {
@@ -95,17 +98,21 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type Social {
       twitter: String
+      github: String
     }
 
     type Mdx implements Node {
+      id: String
+      body: String
       frontmatter: Frontmatter
       fields: Fields
     }
 
     type Frontmatter {
       title: String
-      description: String
-      date: Date @dateformat
+      published: Date @dateformat
+      updated: Date @dateformat
+      tags: [String]
     }
 
     type Fields {

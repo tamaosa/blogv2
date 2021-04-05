@@ -4,12 +4,13 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Mdx } from "../types/mdx"
 
 type Props = {
   data: {
-    mdx: any
-    previous: any
-    next: any
+    mdx: Mdx<"title" | "published" | "updated" | "tags">
+    previous: Mdx<"title">
+    next: Mdx<"title">
   }
 }
 
@@ -19,10 +20,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
 
   return (
     <Layout>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
+      <SEO title={post.frontmatter.title} description={post.excerpt} />
       <article
         className="blog-post"
         itemScope
@@ -30,7 +28,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <p>{post.frontmatter.published}</p>
         </header>
         <MDXRenderer>{post.body}</MDXRenderer>
         <hr />
@@ -80,8 +78,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
-        description
+        published(formatString: "YYYY/MM/DD")
       }
     }
     previous: mdx(id: { eq: $previousPostId }) {

@@ -5,6 +5,7 @@ import { css } from "@emotion/react"
 import { Mdx } from "../../types/mdx"
 import { rhythm } from "../../utils/typography"
 import { articleDate } from "./article-date"
+import Tags from "../tags"
 
 export type ArticleItemType = Pick<
   Mdx<"title" | "published" | "updated" | "tags">,
@@ -19,7 +20,15 @@ const titleStyle = css`
 `
 
 const subTitleStyle = css`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
   margin: 0 0 ${rhythm(1 / 8)} ${rhythm(1 / 2)};
+
+  p {
+    margin: 0 ${rhythm(1 / 4)} 0 0;
+    padding: 0;
+  }
 `
 
 export const ArticleItem: React.FC<ArticleItemType> = ({
@@ -37,7 +46,12 @@ export const ArticleItem: React.FC<ArticleItemType> = ({
         </h3>
       </div>
       <div css={subTitleStyle}>
-        <p>{articleDate(frontmatter.published, frontmatter?.updated)}</p>
+        <div>
+          <p>{articleDate(frontmatter.published, frontmatter?.updated)}</p>
+        </div>
+        <div>
+          <Tags tags={frontmatter?.tags} />
+        </div>
       </div>
     </article>
   )

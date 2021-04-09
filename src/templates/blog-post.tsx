@@ -6,7 +6,7 @@ import { css } from "@emotion/react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Mdx } from "../types/mdx"
-import { articleDate } from "../components/article/article-date"
+import { ArticleDate } from "../components/article/article-date"
 import Tags from "../components/tags"
 import { rhythm } from "../utils/typography"
 import {
@@ -78,7 +78,10 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <Tags tags={post.frontmatter?.tags} />
           <p>
-            {articleDate(post.frontmatter.published, post.frontmatter?.updated)}
+            <ArticleDate
+              published={post.frontmatter.published}
+              updated={post.frontmatter?.updated}
+            />
           </p>
         </header>
         <main css={mainStyle}>

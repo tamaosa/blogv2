@@ -4,7 +4,7 @@ import { css } from "@emotion/react"
 
 import { Mdx } from "../../types/mdx"
 import { rhythm } from "../../utils/typography"
-import { articleDate } from "./article-date"
+import { ArticleDate } from "./article-date"
 import Tags from "../tags"
 
 export type ArticleItemType = Pick<
@@ -47,7 +47,12 @@ export const ArticleItem: React.FC<ArticleItemType> = ({
       </div>
       <div css={subTitleStyle}>
         <div>
-          <p>{articleDate(frontmatter.published, frontmatter?.updated)}</p>
+          <p>
+            <ArticleDate
+              published={frontmatter.published}
+              updated={frontmatter?.updated}
+            />
+          </p>
         </div>
         <div>
           <Tags tags={frontmatter?.tags} />

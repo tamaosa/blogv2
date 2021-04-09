@@ -22,7 +22,13 @@ const Footer: React.FC = () => (
       <small>
         <Link to="/">About</Link> | © 2019 Tamaosa, Built with
         {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <a
+          target="_blank"
+          href="https://www.gatsbyjs.com"
+          rel="external noopener"
+        >
+          Gatsby
+        </a>
       </small>
     </div>
   </footer>

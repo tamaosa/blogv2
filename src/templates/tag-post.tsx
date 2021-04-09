@@ -28,7 +28,7 @@ const TagPost: React.FC<Props> = ({ data, pageContext }) => {
     <Layout>
       <SEO title={tag} />
       <h1>
-        "{tag}"({count})
+        #{tag}({count})
       </h1>
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {

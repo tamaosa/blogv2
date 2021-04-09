@@ -1,10 +1,14 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { css } from "@emotion/react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Mdx } from "../types/mdx"
+import { articleDate } from "../components/article/article-date"
+import Tags from "../components/tags"
+import { rhythm } from "../utils/typography"
 
 type Props = {
   data: {
@@ -14,6 +18,39 @@ type Props = {
   }
 }
 
+const headerStyel = css`
+  margin-bottom: ${rhythm(1)};
+  p {
+    text-align: right;
+  }
+`
+
+const mainStyle = css`
+  margin-bottom: ${rhythm(1)};
+`
+
+const footerStyle = css`
+  text-align: right;
+  margin-bottom: ${rhythm(1)};
+  hr {
+    margin-top: ${rhythm(1)};
+  }
+`
+
+const navStyle = css`
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li: nth-child(even) {
+    margin-left: auto;
+  }
+`
+
 const BlogPostTemplate: React.FC<Props> = ({ data }) => {
   const post = data.mdx
   const { previous, next } = data
@@ -21,29 +58,32 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
+      <article itemScope itemType="http://schema.org/Article">
+        <header css={headerStyel}>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.published}</p>
+          <Tags tags={post.frontmatter?.tags} />
+          <p>
+            {articleDate(post.frontmatter.published, post.frontmatter?.updated)}
+          </p>
         </header>
-        <MDXRenderer>{post.body}</MDXRenderer>
-        <hr />
-        <footer></footer>
+        <main css={mainStyle}>
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </main>
+        <footer css={footerStyle}>
+          <small>
+            <a
+              target="_blank"
+              href={`https://github.com/tamaosa/blogv2/discussions`}
+              rel="external noopener"
+            >
+              （GitHubでディスカッションを開始）
+            </a>
+          </small>
+          <hr />
+        </footer>
       </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+      <nav css={navStyle}>
+        <ul>
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
@@ -78,7 +118,9 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
-        published(formatString: "YYYY/MM/DD")
+        published
+        updated
+        tags
       }
     }
     previous: mdx(id: { eq: $previousPostId }) {

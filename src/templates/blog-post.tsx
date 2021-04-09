@@ -9,12 +9,19 @@ import { Mdx } from "../types/mdx"
 import { articleDate } from "../components/article/article-date"
 import Tags from "../components/tags"
 import { rhythm } from "../utils/typography"
+import {
+  ArticleItem,
+  ArticleItemType,
+} from "../components/article/article-item"
 
 type Props = {
   data: {
     mdx: Mdx<"title" | "published" | "updated" | "tags">
     previous: Mdx<"title">
     next: Mdx<"title">
+    allMdx: {
+      nodes: Array<ArticleItemType>
+    }
   }
 }
 
@@ -37,7 +44,14 @@ const footerStyle = css`
   }
 `
 
-const navStyle = css`
+const relatedStyle = css`
+  h2 {
+    color: var(--fg);
+    text-align: center;
+  }
+`
+
+const prevNextStyle = css`
   ul {
     display: flex;
     flex-flow: row wrap;
@@ -53,6 +67,7 @@ const navStyle = css`
 
 const BlogPostTemplate: React.FC<Props> = ({ data }) => {
   const post = data.mdx
+  const posts = data.allMdx.nodes
   const { previous, next } = data
 
   return (
@@ -82,23 +97,39 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
           <hr />
         </footer>
       </article>
-      <nav css={navStyle}>
-        <ul>
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+      <nav>
+        {posts.length > 0 && (
+          <div css={relatedStyle}>
+            <h2>関連記事</h2>
+            <ol style={{ listStyle: `none` }}>
+              {posts.map(post => {
+                return (
+                  <li key={post.fields.slug}>
+                    <ArticleItem {...post} />
+                  </li>
+                )
+              })}
+            </ol>
+          </div>
+        )}
+        <div css={prevNextStyle}>
+          <ul>
+            <li>
+              {previous && (
+                <Link to={previous.fields.slug} rel="prev">
+                  ← {previous.frontmatter.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next && (
+                <Link to={next.fields.slug} rel="next">
+                  {next.frontmatter.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
+        </div>
       </nav>
     </Layout>
   )
@@ -111,6 +142,7 @@ export const pageQuery = graphql`
     $id: String!
     $previousPostId: String
     $nextPostId: String
+    $tags: [String]
   ) {
     mdx(id: { eq: $id }) {
       id
@@ -137,6 +169,15 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+      }
+    }
+    allMdx(
+      sort: { fields: [frontmatter___published], order: DESC }
+      filter: { frontmatter: { tags: { in: $tags } }, id: { ne: $id } }
+      limit: 5
+    ) {
+      nodes {
+        ...ArticleItems
       }
     }
   }

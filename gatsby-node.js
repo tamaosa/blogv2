@@ -21,6 +21,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             fields {
               slug
             }
+            frontmatter {
+              tags
+            }
           }
         }
         tags: allMdx(limit: 1000) {
@@ -60,6 +63,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id: post.id,
           previousPostId,
           nextPostId,
+          tags: post.frontmatter.tags,
         },
       })
     })

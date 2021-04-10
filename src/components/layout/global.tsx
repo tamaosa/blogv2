@@ -8,13 +8,22 @@ const GlobalStyle: React.FC = () => (
   <Global
     styles={css`
       body {
+        background-color: var(--bg);
+        color: var(--fg);
+      }
+
+      body.light-mode {
         --bg: ${lightTheme.backGround};
         --fg: ${lightTheme.textNormal};
         --fg-title: ${lightTheme.textTitle};
         --fg-link: ${lightTheme.textLink};
+      }
 
-        background-color: var(--bg);
-        color: var(--fg);
+      body.dark-mode {
+        --bg: ${darkTheme.backGround};
+        --fg: ${darkTheme.textNormal};
+        --fg-title: ${darkTheme.textTitle};
+        --fg-link: ${darkTheme.textLink};
       }
 
       h1,

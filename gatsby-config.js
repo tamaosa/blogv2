@@ -130,5 +130,6 @@ module.exports = {
         omitGoogleFont: true,
       },
     },
+    'gatsby-plugin-use-dark-mode',
   ],
 }

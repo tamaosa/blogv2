@@ -1,8 +1,9 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { css } from "@emotion/react"
+import useDarkMode from "use-dark-mode"
 
-import { scale } from "../../utils/typography"
+import { rhythm, scale } from "../../utils/typography"
 
 const headerStyle = css`
   display: flex;
@@ -20,7 +21,21 @@ const titleStyle = css`
   }
 `
 
+const buttonStyle = css`
+  button {
+    background: var(--bg);
+    font-size: ${scale(1 / 2).fontSize};
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+  }
+`
+
 const Header: React.FC = () => {
+  const darkMode = useDarkMode(false)
+
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -37,7 +52,11 @@ const Header: React.FC = () => {
       <div css={titleStyle}>
         <Link to="/">{site.siteMetadata.title}</Link>
       </div>
-      <div>Toggle</div>
+      <div css={buttonStyle}>
+        <button onClick={darkMode.toggle}>
+          {darkMode.value ? "🌛" : "🌞"}
+        </button>
+      </div>
     </header>
   )
 }

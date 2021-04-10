@@ -19,7 +19,10 @@ const SEO: React.FC<Props> = ({
 }) => {
   const { site } = useStaticQuery<{
     site: {
-      siteMetadata: Pick<SiteMetadata, "title" | "description" | "social">
+      siteMetadata: Pick<
+        SiteMetadata,
+        "title" | "siteUrl" | "description" | "social"
+      >
     }
   }>(
     graphql`
@@ -27,6 +30,7 @@ const SEO: React.FC<Props> = ({
         site {
           siteMetadata {
             title
+            siteUrl
             description
             social {
               twitter
@@ -38,14 +42,29 @@ const SEO: React.FC<Props> = ({
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata.title
+  const metaTitle = title
+    ? `${title} - ${site.siteMetadata.title}`
+    : site.siteMetadata.title
+  const metaType = title ? `article` : `website`
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={metaTitle}
+      link={[
+        {
+          rel: "shortcut icon",
+          href: "/favicon.ico",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "512x512",
+          href: "/logo-512.png",
+        },
+      ]}
       meta={[
         {
           name: `description`,
@@ -53,7 +72,7 @@ const SEO: React.FC<Props> = ({
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -61,7 +80,11 @@ const SEO: React.FC<Props> = ({
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: metaType,
+        },
+        {
+          property: `og:image`,
+          content: `${site.siteMetadata.siteUrl}/logo-512.png`,
         },
         {
           name: `twitter:card`,
@@ -73,7 +96,7 @@ const SEO: React.FC<Props> = ({
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,

@@ -43,6 +43,11 @@ const GlobalStyle: React.FC = () => (
         padding-left: ${rhythm(1 / 2)};
         border-left: ${rhythm(1 / 8)} solid var(--fg-title);
       }
+
+      .anchor {
+        fill: var(--fg);
+        margin-right: ${rhythm(1 / 8)};
+      }
     `}
   />
 )

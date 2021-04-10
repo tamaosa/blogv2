@@ -47,9 +47,34 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              offsetY: `100`,
+              className: `anchor`,
+              maintainCase: true,
+              removeAccents: true,
+            },
+          },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              rel: "external noopener",
+            },
+          },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`,
+            },
+          },
+        ],
+        remarkPlugins: [
+          require('remark-math'),
+          require('remark-html-katex'),
         ],
       },
     },
@@ -110,11 +135,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `tamaosa.com`,
+        short_name: `tamaosa`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#7ecef5`,
         display: `minimal-ui`,
         icon: `content/images/logo-1024.png`, // This path is relative to the root of the site.
       },
@@ -131,5 +156,25 @@ module.exports = {
       },
     },
     'gatsby-plugin-use-dark-mode',
+    `gatsby-plugin-robots-txt`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: [`/tags/*`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `#7ecef5`,
+        showSpinner: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: process.env.GATSBY_GOOGLE_ANALYTICS_ID,
+      },
+    },
   ],
 }

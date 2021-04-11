@@ -60,7 +60,7 @@ const prevNextStyle = css`
     margin: 0;
     padding: 0;
   }
-  li: nth-child(even) {
+  li:nth-of-type(2n) {
     margin-left: auto;
   }
 `

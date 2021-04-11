@@ -23,7 +23,7 @@ const subTitleStyle = css`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  margin: 0 0 ${rhythm(1 / 8)} ${rhythm(1 / 2)};
+  margin: ${rhythm(1 / 4)} 0 ${rhythm(1 / 4)} ${rhythm(1 / 2)};
 
   p {
     margin: 0 ${rhythm(1 / 4)} 0 0;

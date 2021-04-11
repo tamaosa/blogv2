@@ -1,0 +1,271 @@
+---
+title: C#で値を表す自作クラスに等価性を定義する
+published: 2021-01-25
+updated: 2021-04-03
+tags:
+  - C#
+---
+
+たとえば`int`のようなプリミティブ型をラップしたような値を表す自作のクラス（いわゆる[Value Object](https://en.wikipedia.org/wiki/Value_object)）を作った場合に、等価性（等しいこと）を定義する方法をメモします。
+
+## その前に！
+
+まずは Microsoft のガイド[型の値の等価性を定義する方法 (C# プログラミング ガイド)](https://docs.microsoft.com/ja-jp/dotnet/csharp/programming-guide/statements-expressions-operators/how-to-define-value-equality-for-a-type)を読んでください。もし、意味わからんとなったらこの記事を読む価値があるかもしれません。
+
+## どういう話
+
+次のようなものすごく単純化した値オブジェクトを考えてみます。
+
+```cs
+public class Amount
+{
+    private readonly int value;
+    public Amount(int value)
+    {
+        this.value = value;
+    }
+}
+```
+
+このときこのままでは、
+
+```cs
+Console.WriteLine( new Amount(1) == new Amount(1)); //False
+```
+
+は`False`になってしまいます（**同じ値**として扱いたいのに！）。
+
+### 値型と参照型
+
+上記が`False`になってしまうのは**クラスが参照型**だからです。
+
+C#の型には大きく分けて[値型と参照型](https://ufcpp.net/study/csharp/oo_reference.html)の 2 つがあります。値型（たとえば`int`とか）の場合等価性の判定にはその**値**が用いられます（同値性）。
+
+```cs
+int val1 = 1;
+int val2 = 1;
+int val3 = val1;
+Console.WriteLine(val1 == val2); //True
+Console.WriteLine(val1 == val3); //もちろんTrue
+```
+
+一方、参照型（クラスとか）の場合等価性の判定にはその**参照先**が同一か（インスタンスが同一か）が用いられます（同一性）。
+
+```cs
+Amount ref1 = new Amount(1);
+Amount ref2 = new Amount(1);
+Amount ref3 = ref1;
+Console.WriteLine(ref1 == ref2); //参照先が異なるのでFalse
+Console.WriteLine(ref1 == ref3); //これはTrue
+```
+
+## じゃどうする
+
+クラスは参照型なのでたとえ値が同じでもこのままでは「等しい」と評価されないことが分かりました。ただ、今回作ったクラスは「値」としての振る舞いを期待しています（値オブジェクトだし）。
+
+こういった場合はクラスに追加の実装をする必要があります。
+
+### `IEquatable<T>`を実装する
+
+C#には[`IEquatable<T>`](https://docs.microsoft.com/ja-jp/dotnet/api/system.iequatable-1?view=net-5.0)というピッタリなインターフェイスが用意されています。`IEquatable<T>`を実装すると今回の場合はたとえば次のようになります。
+
+```cs
+public class Amount : IEquatable<Amount>
+{
+    private readonly int value;
+
+    public Amount(int value)
+    {
+        this.value = value;
+    }
+
+    public bool Equals(Amount other)
+    {
+        if(other is null) return false;
+        return this.value == other.value;
+    }
+}
+```
+
+こうすると、
+
+```cs
+Console.WriteLine(new Amount(1).Equals(new Amount(1))); //True!!!
+```
+
+になります。この`IEquatable<T>.Equals(T)`は`List<T>`など他の多くのクラスでの等価性の判定に利用されます。よくできてますね。
+
+### `Object.Equals(Object)`をオーバーライドする
+
+すべてのクラスには[`Object.Equals`](https://docs.microsoft.com/ja-jp/dotnet/api/system.object.equals?view=net-5.0)という仮想メソッドが存在しています（これはすべてのクラスが`Object`型を継承しているから）。
+
+この`Object.Equals(Object)`は等価性の判定のため、通常`List<T>`などのクラスから呼び出されるメソッドです（前述の通り`IEquatable<T>`などが実装されていれば別）。ところで、いまのままでは`Equals(T)`と`Equals(Object)`の動作が一致しません。
+
+```cs
+Console.WriteLine(new Amount(1).Equals(new Amount(1))); //Equals(Amount)だとTrueだけど
+Console.WriteLine(new Amount(1).Equals((object)new Amount(1))); //Equals(Object)だとFalse
+```
+
+これは`Object.Equals(Object)`が既定の動作として参照による等価性の判定をしているためです。そこで、たとえば次のように`Object.Equals(Object)`をオーバーライドします。
+
+```cs
+public class Amount : IEquatable<Amount>
+{
+    private readonly int value;
+
+    public Amount(int value)
+    {
+        this.value = value;
+    }
+
+    public bool Equals(Amount other)
+    {
+        if(other is null) return false;
+        return this.value == other.value;
+    }
+
+    public override bool Equals(object other)
+    {
+        return Equals(other as Amount);
+    }
+}
+```
+
+こうすると同じ結果が得られるようになります。
+
+```cs
+Console.WriteLine(new Amount(1).Equals(new Amount(1))); //Equals(Amount)もTrue
+Console.WriteLine(new Amount(1).Equals((object)new Amount(1))); //Equals(Object)もTrue
+```
+
+#### なぜ`IEquatable<T>`を実装するのか
+
+はじめから`Object.Equals(Object)`をオーバーライドすれば、わざわざ`IEquatable<T>`を実装しなくても良い気もしいます。
+
+理由としては、タイプセーフな点と`Object`型へのキャストを避けられるのでパフォーマンス向上が望める点などでしょうか（まあものすごく大きな恩恵ではない）。個人的には`IEquatable<T>`を実装することでクラスの意図が明確になるので基本的に実装しておくべきと思います。
+
+### `Object.GetHashCode()`をオーバーライドする
+
+この状態では、たとえば Visula Studio を使用している場合、下記のような警告を表示してきます。
+
+> 'Amount' は Object.Equals(object o) をオーバーライドしますが、Object.GetHashCode() をオーバーライドしません。
+
+[`Object.GetHashCode`](https://docs.microsoft.com/ja-jp/dotnet/api/system.object.gethashcode?view=net-5.0)はハッシュコードを返すメソッドで、たとえば[Dictionary](https://docs.microsoft.com/ja-jp/dotnet/api/system.collections.generic.dictionary-2?view=net-5.0)の Key の探索に利用されます。この`Object.GetHashCode`は 2 つのオブジェクトが等価であれば同一の値を返す必要があります。
+
+たとえば、いまの状態で`Amount`を Dictonary の Key にすると思い通りの動きをしてくれません。
+
+```cs
+var dic = new Dictionary<Amount, int> { { new Amount(1), 1 } };
+Console.WriteLine(dic.ContainsKey(new Amount(1))); //これはFalse、Keyが見つからない。
+```
+
+これは`Equals()`をオーバーライドして値による等価性の判定をするようにしたのに、`GetHashCode()`をオーバーライドしていないため起こります。そこで値が同じであれば同一のハッシュコードを返すように、たとえば下記のように`GetHashCode()`をオーバーライドします。
+
+```cs
+public class Amount : IEquatable<Amount>
+{
+    private readonly int value;
+
+    public Amount(int value)
+    {
+        this.value = value;
+    }
+
+    public bool Equals(Amount other)
+    {
+        if(other is null) return false;
+        return this.value == other.value;
+    }
+
+    public override bool Equals(object other)
+    {
+        return Equals(other as Amount);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(value);
+    }
+}
+```
+
+こうすると先ほどの Dictonary の例も思った通り動作をしてくれます。
+
+```cs
+var dic = new Dictionary<Amount, int> { { new Amount(1), 1 } };
+Console.WriteLine(dic.ContainsKey(new Amount(1))); //True、Keyが見つかる！
+```
+
+### オペレーター`==` `!=`をオーバーロードする
+
+いろいろ実装してきましたがここで最初に戻ってみます。
+
+```cs
+Console.WriteLine( new Amount(1) == new Amount(1)); //やっぱりFalse
+```
+
+やっぱり False です…これは既定の動作として参照の等価判定が行われているためです。
+
+しかし`Equals`と`==`の結果が異なるというのはどうにも気持ち悪く感じます。また、`Amount`は値としての振る舞いを期待しているのでやはり`==`や`!=`などのオペレーターが使えると便利ですし直観的です。そこで、たとえば下記のようにオペレーターをオーバーロードします。
+
+```cs
+public class Amount : IEquatable<Amount>
+{
+    private readonly int value;
+
+    public Amount(int value)
+    {
+        this.value = value;
+    }
+
+    public bool Equals(Amount other)
+    {
+        if(other is null) return false;
+        return this.value == other.value;
+    }
+
+    public override bool Equals(object other)
+    {
+        return Equals(other as Amount);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(value);
+    }
+
+    public static bool operator ==(Amount lhs, Amount rhs)
+    {
+        if (lhs is null) return rhs is null;
+        return lhs.Equals(rhs);
+    }
+
+    public static bool operator !=(Amount lhs, Amount rhs)
+    {
+        return !(lhs == rhs);
+    }
+}
+```
+
+こうするとオペレーターを使用しても値による等価判定がされるようになります。
+
+```cs
+Console.WriteLine( new Amount(1) == new Amount(1)); //True!!!!
+```
+
+やったね！
+
+## おわりに
+
+結構やることが多くて大変です。
+
+ただ、Visual Studio を使っていれば[自動生成](https://docs.microsoft.com/en-us/visualstudio/ide/reference/generate-equals-gethashcode-methods?view=vs-2017)させることが可能なので基本的にはこれを使用すれば良いと思います。今回は手で書きましたがおかしなコードが紛れ込みかねないと思います（上記コードもおかしなとこありそう…）。
+
+また、C#9.0 では[レコード型](https://docs.microsoft.com/ja-jp/dotnet/csharp/whats-new/csharp-9#record-types)が導入されました。レコード型を利用すると、同値性による等価判定や`GetHashCode()`のオーバーライドなどここで実装してきたことが簡単に実現できます。とても便利ですね。
+
+## 参考
+
+- [型の値の等価性を定義する方法 (C# プログラミング ガイド)](https://docs.microsoft.com/ja-jp/dotnet/csharp/programming-guide/statements-expressions-operators/how-to-define-value-equality-for-a-type)
+- [IEquatable を完全に理解する](https://qiita.com/cactuaroid/items/f277a097ecf51eb247c0#fn2)
+- [C# で二つのオブジェクトを比較する](https://qiita.com/Zuishin/items/62c5b726bfa589b3fb9b#comments)（とくにコメントが参考になりました。）
+- [自作クラスの Equals メソッドをオーバーライドして、等価の定義を変更する](https://dobon.net/vb/dotnet/beginner/equals.html)

@@ -1,0 +1,83 @@
+---
+title: wsl2が異常に遅くてホットリロードも効かないとき
+published: 2020-05-08
+tags:
+  - wsl
+  - Linux
+---
+
+Windows 上で Linux 環境を用意できる[Windows Subsystem for Linux(wsl)](https://docs.microsoft.com/ja-jp/windows/wsl/about)便利ですよね。僕は現在 windows 機しか手元にないためよく利用しています。
+
+そんな便利な wsl ですが、最近 [wsl2](https://docs.microsoft.com/ja-jp/windows/wsl/wsl2-index) という新しいバージョンのアーキテクチャが正式リリースされました。そこでさっそく既存の wsl1 から wsl2 に乗り換えたのですが、異常に遅くなったりホットリロードまで効かなくなったりとで少々手こずりました。ここではその忘備録を残します。
+
+## 最初に結論
+
+wsl 上で React アプリの作成をしていたのですが、wsl2 にしたところビルドが異常に遅くなったりホットリロードが効かなくなったりしてしまいました。
+
+これは、
+
+**Windows ファイルシステム上（`/mnt`配下）で作業している**
+
+が原因でした。
+
+wsl2 では Windows ファイルシステムへアクセスする方法が[9P](https://ja.wikipedia.org/wiki/9P)というプロトコルに変更されています。どうやらこの変更が影響しているようで、9P はアクセス速度が遅くまたファイル監視も上手く機能しないようです。僕は winodows 側からでも作業しやすいように`/mnt`配下で作業していたためはまりました…
+
+## 対策
+
+対策というほどのことではないですが、
+
+「Linux ファイルシステム上で作業する」
+
+ようにすればビルドはもちろんホットリロードもしっかり動作するようになります。むしろ wsl1 より快適になると思います。
+
+[issue](https://github.com/microsoft/WSL/issues/4417)を見ても、
+
+> If you're experiencing this issue please place your files in the Linux root file system and run from there, if you are still experiencing this issue after that then please feel free to comment here or reopen. Thank you! :)
+
+とのことなので Windows 側のファイルを Linux 側に引っ越しましょう。
+
+## 検証
+
+せっかくなのでちょー簡単に検証してみます。
+Window および Linux ファイルシステムで [Create React App](https://create-react-app.dev/) のビルド時間と開発サーバーのホットリロードが動作するか見てみました。
+
+### 環境
+
+ざっくりとした環境は、
+
+|                         |                               |
+| ----------------------- | ----------------------------- |
+| OS                      | Windows 10 home, version 2004 |
+| WSL                     | VERSION 2, Ubuntu-18.04       |
+| Node                    | v10.16.0                      |
+| Create React App &emsp; | 3.3.0                         |
+
+です。Create React App は例えば、
+
+```bash
+npx create-react-app my-app
+```
+
+ではいります。
+
+### 結果
+
+|                   | Windows &emsp; | Linux     |
+| ----------------- | -------------- | --------- |
+| Build Time        | 153.37s        | 11.75s    |
+| Hot-Reload &emsp; | &#x1f645;      | &#x1f646; |
+
+Windows 側で環境構築すると Linux 側に比べてビルドに 10 倍以上の時間を要していました。明らかに遅い！
+
+## さいごに
+
+9P によるファイル監視機能の追加に関する [issue](https://github.com/microsoft/WSL/issues/4064) は立てられてるみたいなので、もしかしたら将来的には Windows 側からもホットリロードが利用できるようになるかもしれません。
+
+とはいえ、wsl2 では極力 **Linux 側で作業する**ようにした方が良さそうです。
+
+実際、Windows 側で作業していた理由って「エクスプローラーもすぐ開けたら便利な時もありそうだなあ」と思ったぐらいで、`explorer.exe`ですぐにエクスプローラーは開けるのでほとんど困ることはなさそうです。
+
+## 参考
+
+- [Windows Subsystem for Linux に関するドキュメント](https://docs.microsoft.com/ja-jp/windows/wsl/about)
+- [WSL のアーキテクチャ](https://roy-n-roy.github.io/Windows/WSL%EF%BC%86%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A/Architecture/)

@@ -1,0 +1,300 @@
+---
+title: 余りものPCでクラスターもどきを作った時のメモ
+published: 2020-07-24
+tags:
+  - Linux
+---
+
+余っていた PC をクラスター化させた時のメモです。たしか Ubuntu16.04LTS でやりました。また、これは試しに**取りあえず動けばいい**精神でやったものです。あくまで**参考程度に**どうぞ。
+
+## やりたいこと
+
+メイン PC の座から陥落してしまったかわいそうな PC たち。でも、せっかくなので計算はさせておきたい。そこで、効率よく働いてもらうために[ジョブ管理システム](https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%96%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0)を導入したい。ゆくゆくは並列計算なんかもできれば（と思ってたけどやってない）。
+
+## 設定方法
+
+ローカルなネットワーク内に複数台の PC を接続していることが前提です。今回はこの中の 1 台を head node として [NIS(network information service)](https://ja.wikipedia.org/wiki/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%BB%E3%82%A4%E3%83%B3%E3%83%95%E3%82%A9%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%BB%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9)、[NFS(network file system)](https://ja.wikipedia.org/wiki/Network_File_System)、ジョブ管理システムの[TORQUE](https://en.wikipedia.org/wiki/TORQUE) をすべてぶち込みました。その他の PC は計算用 node になります。
+
+### IP アドレスの固定
+
+すべての node の IP アドレスを固定しておきます（この際に ssh の設定もしておくと良いかも）。
+
+### NIS の設定
+
+アカウント情報等を共有するのに必要です。
+
+#### head node 側（NIS）
+
+nis をインストールします。インストール中にドメイン名を聞かれるので設定します。
+
+```bash
+sudo apt install nis
+```
+
+/etc/ypserv.securenets を編集します。
+
+```text
+#This line gives access to everybody. PLEASE ADJUST!
+#0.0.0.0 0.0.0.0 #変更前
+255.255.255.0 192.168.1.0 #アクセス許可する範囲追記
+```
+
+/var/yp/Makefile を編集します。
+
+```text
+MERGE_PASSWD=true
+MERGE_GROUP=true
+```
+
+/etc/hosts で固定した IP アドレスとドメイン名を設定します。
+
+```text
+192.168.1.1 head-node-name
+```
+
+/etc/default/nis を編集します。
+
+```text
+NISSERVER=master
+NISCLIENT=false
+```
+
+NIS データベース更新します。
+
+```bash
+/usr/lib/yp/ypinit -m
+```
+
+サービスを再起動します。
+
+```bash
+service rpcbind restart
+service ypbind restart
+```
+
+#### 計算 node 側（NIS）
+
+nis をインストールします。head-node と同じドメイン名を設定します。
+
+```bash
+sudo apt install nis
+```
+
+/etc/yp.conf を編集します。最終行へ`[ドメイン名] server [head-nodeのホスト名 or IP アドレス]`を追記します。
+
+```text
+domain head-node-name server 192.168.1.1
+```
+
+/etc/nsswitch.conf を編集します。
+
+```text
+passwd: compat nis
+group: compat nis
+shadow: compat nis
+hosts: files dns nis
+```
+
+サービスを再起動します。
+
+```bash
+service rpcbind restart
+service ypbind restart
+```
+
+最後に確認します。
+
+```bash
+ypwhich
+```
+
+### NFS の設定
+
+ファイル共有のために必要です。今回は`/home`を共有します。
+
+#### head node 側（NFS）
+
+nfs をインストールします。
+
+```bash
+sudo apt install nfs-kernel-server
+```
+
+/etc/exports に以下を追記します。
+
+```text
+/home 192.168.1.0/255.255.255.0(rw,async) #/home をマウントする
+```
+
+ここで、`rw`読み書きの許可、`async` は非同期書き込みを意味します。適宜適切なオプションを選択してください。次に nfs を再起動します。
+
+```bash
+/etc/init.d/nfs-kernel-server restart
+```
+
+#### 計算 node 側（NFS）
+
+nfs をインストールします。
+
+```bash
+sudo apt-get install nfs-common
+```
+
+マウント先のディレクトリを作成します。
+
+```bash
+mkdir /home
+```
+
+/etc/fstab に以下を追記します。
+
+```text
+192.168.1.1:/home /home nfs defaults 0 0
+```
+
+OS を再起動し、`/home`がマウントされたか確認します。
+
+```bash
+df -h
+```
+
+### TORQUE の設定
+
+ジョブ管理システムです。
+
+#### head node 側（TORQUE）
+
+torque をインストールします。
+
+```bash
+sudo apt install torque-server
+```
+
+/var/spool/torque/server_name にヘッドノード名を追記します。
+
+```text
+head-node-name
+```
+
+一度サービスを停止します。
+
+```bash
+ps -e |grep pbs
+sudo kill ID #pbs関連のjobを終了させる
+```
+
+pbs サーバの設定を行います。
+
+```bash
+pbs_server -t create
+qmgr -c "set server scheduling=true"
+qmgr -c "create queue batch queue_type=execution" #"batch"というキューを作成
+qmgr -c "set queue batch started=true"
+qmgr -c "set queue batch enabled=true"
+qmgr -c "set queue batch resources_default.nodes=1"
+qmgr -c "set server default_queue=batch" #デフォルトキューを"batch"
+qmgr -c "set server acl_hosts = head-node-name" #hostname を指定
+qmgr -c 'set server submit_hosts = head-node-name' #hostname を指定
+qmgr -c 'set server allow_node_submit = True'
+```
+
+pbs サーバの確認をします。
+
+```bash
+qmgr -c 'p s'
+```
+
+/var/spool/torque/server_priv/nodes を作成し、各計算 node のホスト名と最大ジョブ数を指定します。
+
+```text
+node1 np=8 #ホスト名 np=最大ジョブ数
+node2 np=8
+...
+```
+
+サービスを再起動します。
+
+```bash
+service torque-* restart
+```
+
+#### 計算 node 側（TORQUE）
+
+torque をインストールします。
+
+```bash
+sudo apt install torque-mom torque-client
+```
+
+/var/spool/torque/server_name に head node 名を追記します。
+
+```text
+head-node-name
+```
+
+/var/spool/torque/mom_priv/config を編集します。
+
+```text
+$pbsserver  head-node-name  #hostname of the head node
+$logevent 255 # bitmap of which events to log
+$usecp *:/home /home # NFS setting
+```
+
+サービスを再起動します
+
+```bash
+service torque-mom restart
+```
+
+設定は以上です。
+
+## ジョブの投入
+
+head node からジョブを投入すれば、勝手に各計算 node にジョブが割り当てられます。計算結果などは各ノードにマウントしている`/home`以下に吐くようにすればよいです。
+
+ジョブの投入には下記のようなシェルスクリプトを作成すると便利です。
+
+```shell
+#!/bin/sh
+#PBS -N job  #job名の指定
+#PBS -j oe  #標準出力とエラー出力をまとめる
+#PBS -q batch  #queueの指定
+#PBS -l nodes=1  #使用するnode数を指定
+cd $PBS_O_WORKDIR #ジョブ投入時のディレクトリ
+./a.out
+```
+
+上記シェルスクリプト（`job.sh`）を用いてジョブの投入を行うには、
+
+```bash
+qsub ./job.sh
+```
+
+とします。またジョブの状態は、
+
+```bash
+qstat
+```
+
+で確認できます。
+
+また各 node の状況は、
+
+```bash
+pbsnodes
+```
+
+で確認できます。
+
+何かしらのエラーが出るときは、とりあえず各デーモンを再起動してみると上手くいくかもしれない…
+
+## おわりに
+
+数年前に自分でとったメモが元ネタなので誤りや古い情報があるかもしれません。あくまで**参考**程度に…
+
+## 参考
+
+- [TORQUE のインストールと設定](http://tech.ckme.co.jp/torque.shtml)
+- [ジョブスケジューラー torque の設定](http://www.ep.sci.hokudai.ac.jp/~kodama/tebiki/TEBIKI.hikari-torque.htm.ja)
+- [TORQUE - Archwiki](https://wiki.archlinux.jp/index.php/TORQUE)
+- Torque ユーザーマニュアル - HPC システムズ

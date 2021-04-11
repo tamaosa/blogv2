@@ -1,0 +1,122 @@
+---
+title: Renovateを使ってみた
+published: 2020-11-23
+tags:
+  - GitHub
+---
+
+Renovate の設定めも
+
+## Renovate とは
+
+依存関係の更新を自動化してくれます。同様のツールに[Dependabot](https://dependabot.com/)もありますが、Renovate はより細かなことができて便利なようです。
+
+<https://docs.renovatebot.com/>
+
+## インストール（GitHub App）
+
+GitHub で利用するのであれば Marketplace からインストールできます。
+
+<https://github.com/apps/renovate>
+
+基本的に無料で利用できるのでありがたいですね。
+
+## 設定
+
+基本的にはプロジェクトのルートに`renovate.json`を用意して、ここに設定を書き込んでいく形になります（他の方法でも可。たとえば`package.json`に記述することも可能）。
+この設定項目がやたらと多くてビビります。ぜひ[公式](https://docs.renovatebot.com/configuration-options/)をみてみてください。
+
+ここでは（忘れるので）個人的に良さげだなと思った設定項目をメモしておきます…
+
+```json
+{
+  "extends": ["config:base"],
+  "baseBranches": ["develop"],
+  "timezone": "Asia/Tokyo",
+  "schedule": "every weekend",
+  "labels": ["dependencies"],
+  "patch": {
+    "automerge": true
+  },
+  "minor": {
+    "groupName": "all dependencies"
+  },
+  "vulnerabilityAlerts": {
+    "labels": ["security"]
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 7pm on the first day of the month"]
+  }
+}
+```
+
+### extends
+
+[設定プリセット](https://docs.renovatebot.com/config-presets/)を継承します。
+
+Renovate には好きな設定をプリセットとして公開できる機能があり、ここでそのプリセットを継承できます。`config:base`は Renovate のデフォルトの設定を継承します。
+
+### baseBranches
+
+ベースブランチを指定できます（未指定の場合はデフォルトブランチが指定される）。
+
+### timezone
+
+タイムゾーンを指定できます。とくに理由がない限り`Asia/Tokyo`とかにしておけば良さそうです。
+
+### schedule
+
+更新頻度を指定できます。`every weekend`を指定すると毎週末更新を行ってくれます。
+
+### labels
+
+Renovate が作成する PR に付けるラベルを指定できます（未指定の場合はラベルなし）。
+
+### automerge
+
+`true`を指定すると Renovate によって作成された PR が自動的にマージされるようになります。
+
+### patch
+
+パッチバージョンの更新に適用する設定を決められます。たとえば、
+
+```json
+  "patch": {
+    "automerge": true
+  }
+```
+
+とするとパッチバージョン更新時のみ PR を自動マージできます。
+
+### minor
+
+マイナーバージョン更新時の設定が決められます。
+
+### groupName
+
+グループ名を指定できます。
+
+### vulnerabilityAlerts
+
+脆弱性のある PR に適用する設定を決められます。たとえば、
+
+```json
+  "vulnerabilityAlerts": {
+    "labels": [
+      "security"
+    ]
+  },
+```
+
+とすると脆弱性を含む PR のみラベルが security になります。
+
+### lockFileMaintenance
+
+`"enabled": true`にすると、package-lock.json や yarn.lock などのロックファイルを更新できるようになります。
+
+## 参考
+
+- <https://docs.renovatebot.com/>
+- <https://user-first.ikyu.co.jp/entry/2018/05/07/193755>
+- <https://medium.com/@hokan_dev/renovate%E3%82%92%E4%BD%BF%E3%81%86-743ab538c64b>

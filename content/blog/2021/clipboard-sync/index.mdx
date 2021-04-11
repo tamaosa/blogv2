@@ -1,0 +1,119 @@
+---
+title: PowerShellと共有フォルダーを使ってなんちゃってクリップボード同期
+published: 2021-01-19
+tags:
+  - PowerShell
+---
+
+## はじめに
+
+**大人の事情で**PC を業務に応じて使い分けないといけないときってあると思います（あるんです！）。そして PC を複数台併用しているとクリップボードの同期がしたくなってきます（とくにメール書いてるときとか）。
+
+ちまたにはクリップボードの同期をする方法はたくさんあります（たとえば[Windows 10 では MS アカウント作成すればクリップボードの同期が可能](https://support.microsoft.com/ja-jp/windows/windows-10-%E3%81%AE%E3%82%AF%E3%83%AA%E3%83%83%E3%83%97%E3%83%9C%E3%83%BC%E3%83%89-c436501e-985d-1c8d-97ea-fe46ddf338c6#:~:text=%E3%81%8A%E4%BD%BF%E3%81%84%E3%81%AE%20Windows%2010,%E3%81%99%E3%82%8B%5D%20%E3%82%92%E9%81%B8%E6%8A%9E%E3%81%97%E3%81%BE%E3%81%99%E3%80%82)）。
+
+ただ、**大人の事情で**ツールのインストールや設定変更が制限されてることってあると思います（あるんです！）。だけどもだけども、どうにかしてクリップボードを同期させたいなと思い少し考えたというのがこの記事です。
+
+私の環境はよくよく考えると運の良いことに**共有フォルダー**を PC 間で使える状態だったのでこれを利用することにしました。
+
+## 前提
+
+- Winodws（PowerShell 使う）
+- 共有フォルダー等が利用できること
+
+## なんとか同期する
+
+共有フォルダーが使えるのであれば、早い話が「クリップボードの内容を共有フォルダーに書き込む」and「共有フォルダーを読み込んでクリップボードにセットする」ができればとりあえずはよさそうです。
+
+今回はこれらをインストール不要で実行できる必要があるため[PowerShell](https://docs.microsoft.com/ja-jp/powershell/)さんのお世話になりたいと思います。
+
+### PowerShell でクリップボード操作
+
+走り書きですが書いてみました。
+
+#### 書き込み
+
+```powershell
+$XML = [XML](Get-Content .\config.xml)
+New-Item -ItemType Directory -Force -Path $XML.Path
+if(!(test-path $XML.Path)){
+  throw "Invalid path."
+}
+
+$text = Get-Clipboard -Format Text
+if ($text) {
+  Remove-Item (Join-Path $XML.Path *) -Recurse
+  $text > (Join-Path $XML.Path clipboard.txt)
+  exit
+}
+
+$image = Get-Clipboard -Format Image
+if ($image) {
+  Remove-Item (Join-Path $XML.Path *) -Recurse
+  $image.Save((Join-Path $XML.Path clipboard.png), [System.Drawing.Imaging.ImageFormat]::Png)
+  exit
+}
+
+$files = Get-Clipboard -Format FileDropList
+if ($files) {
+  Remove-Item (Join-Path $XML.Path *) -Recurse
+  $data = Join-Path $XML.Path clipboard
+  New-Item -ItemType Directory -Force -Path $data
+  $files | ForEach-Object{Copy-Item $_.FullName $data -Recurse}
+  exit
+}
+
+Write-Error "The clipboard is empty or an unsupported file format."
+```
+
+[Get-Clipboard](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.management/get-clipboard?view=powershell-5.1)を利用して指定のパス（上記では`$XML.Path`）配下にクリップボードの中身を書き込んでいます。ここではクリップボードの中身がテキスト、画像、ファイルパスの場合に対応できるようそれぞれ処理を書いています。その他の形式は対応していません。
+
+#### 読み込み
+
+```powershell
+$XML = [XML](Get-Content .\config.xml)
+
+$cliptext = Join-Path $XML.Path clipboard.txt
+if (test-path $cliptext) {
+  Get-Content $cliptext | Set-Clipboard
+  exit
+}
+
+$clipimage = Join-Path $XML.Path clipboard.png
+if (test-path $clipimage) {
+  Add-Type -Assembly System.Windows.Forms
+  Add-Type -Assembly System.Drawing
+  $image = [Drawing.Image]::FromFile($clipimage)
+  [Windows.Forms.Clipboard]::SetImage($image)
+  exit
+}
+
+$clipdir = Join-Path $XML.Path clipboard
+if (test-path $clipdir) {
+  Set-Clipboard -Path (Join-Path $clipdir *)
+  exit
+}
+
+Write-Error "The file or directory is not found."
+```
+
+書き込み時に作成したファイル（またはフォルダー）が存在していれば、[Set-Clipboard](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.management/set-clipboard?view=powershell-5.1)を用いてその中身をクリップボードに設定しています。画像に関しては Set-Clipboard ではどうも設定できなさそうだったので、[Windows.Forms.Clipboard](https://docs.microsoft.com/ja-jp/dotnet/api/system.windows.forms.clipboard?view=net-5.0)を呼び出しています。
+
+これで一応共有フォルダー介してクリップボード（テキスト、画像、ファイルのみ）の同期ができるようになりました。やったね。
+
+### PowerShell の参考情報
+
+PowerShell を実行しようとするともしかしたら管理者権限を求められるかもしれませんが回避する方法はたくさんあります（[管理者権限なしで PowerShell スクリプトを実行する方法](https://qiita.com/alchemist/items/e6706cd425f8f5e5032e)）。
+
+また、各スクリプトを実行するショートカットを作成したりさらに[ショートカットキーを割り当て](https://www.atmarkit.co.jp/fwin2k/win2ktips/150use_shortcut/use_shortcut.html)ればより便利かも。
+
+## おわりに
+
+似たような境遇の方の参考になればと[ここ](https://github.com/tamaosa/winclip-sync)に供養しておきます。
+
+## 参考
+
+- [PowerShell メモ　クリップボード操作](https://qiita.com/Kosen-amai/items/2e92c9b1dc19fd12b6f5)
+- [Set a local image into clipboard contents](https://stackoverflow.com/questions/33049885/set-a-local-image-into-clipboard-contents)
+- [Powershell を楽に実行してもらうには](https://qiita.com/tomoko523/items/df8e384d32a377381ef9#%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E4%BD%9C%E6%88%90%E7%B7%A8)
+- [管理者権限なしで PowerShell スクリプトを実行する方法](https://qiita.com/alchemist/items/e6706cd425f8f5e5032e)
+- [プログラムを素早く起動する方法（ショートカット・キーを設定する）](https://www.atmarkit.co.jp/fwin2k/win2ktips/150use_shortcut/use_shortcut.html)

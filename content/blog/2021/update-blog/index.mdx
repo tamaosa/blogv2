@@ -1,0 +1,104 @@
+---
+title: ブログを作り直した。
+published: 2021-04-11
+tags:
+  - Gatsby
+  - 雑記
+---
+
+なんとなくブログを作り直しました。[以前のブログ](https://tamaosa.netlify.app/)はサムネイル画像とかちゃんと出してたんですがだんだん面倒くさくなってきていたので思い切ってシンプルなレイアウトに変更しました。あと、個人的にダークモード対応させたかったのでこれもやりました。
+
+新しくするにあたりせっかくなので、まえまで対応していなかった[Gatsby v3.0](https://www.gatsbyjs.com/blog/gatsby-v3/)とか[MDX](https://mdxjs.com/)とかを使用してみたのですが、その際に驚いた点や手こずった点をメモしておきます。
+
+## Gatsby v3.0 速い
+
+ちゃんと検証したわけではないのですが**体感として**速いです。
+
+[Introducing Gatsby 3.0 – Faster in Every Way that Matters](https://www.gatsbyjs.com/blog/gatsby-v3/)
+
+あらゆる面で高速と謳っているだけあって、
+
+- V3 for Developers: 80% speed improvement in local development experience
+- V3 for Content Editors: Faster build times on any service
+- V3 for Site Visitors: Stronger core web vitals and higher Lighthouse scores
+
+とのことです。すごいですね。個人的には差分ビルドがデフォルトでサポートされたのは無料プランのホスティングサービスを利用している身からするとありがたかったです。
+
+## StaticImage が楽
+
+[gatsby-plugin-image](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/)というのが Gatsby v2.24.78 から使えます。
+
+このプラグインを利用すると静的な画像の描画で[前まで（gatsby-image）](https://www.gatsbyjs.com/plugins/gatsby-image/)必要だった GraphQL が必要なくなります。つまり、
+
+```jsx
+import React from "react"
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
+
+export default ({ data }) => (
+  <>
+    <Img fixed={data.file.childImageSharp.fixed} />
+  </>
+)
+
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "hoge.png" }) {
+      childImageSharp {
+        fixed(width: 125, height: 125) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`
+```
+
+が、
+
+```jsx
+import { StaticImage } from "gatsby-plugin-image"
+
+export function Dino() {
+  return <StaticImage src="./hoge.png" />
+}
+```
+
+になりました。最高ですね。
+
+## use-dark-mode が動かない
+
+ダークモード対応するために[use-dark-mode](https://github.com/donavon/use-dark-mode)を利用しようとしていたのですが、
+
+```bash
+Uncaught ReferenceError: global is not defined
+    at d (use-dark-mode.m.js:1)
+```
+
+というエラーが出てしまい動作しませんでした。おそらく webpack v5 関連に起因するエラーという予想はついたのですが良く分からず。
+
+issue を覗いてみると[同様の症状](https://github.com/wKovacs64/gatsby-plugin-use-dark-mode/issues/73)が報告されておりどうやら gatsby-plugin-image が原因のようでした。不思議ですね。
+
+その後、[gatsby-plugin-image が更新](https://github.com/gatsbyjs/gatsby/discussions/30094#discussioncomment-579724)され無事動作するようになりました。同様の症状の方は gatsby-plugin-image を v1.2.1 まで上げてみてください。タイミングよくて良かった～
+
+## MDX での`<T>`
+
+いままで Markdown で書いていた記事を MDX へ変換したのですが、一部 C#のソースコードを載せている記事で、
+
+```bash
+ SyntaxError: unknown: Expected corresponding JSX closing tag for <T>
+```
+
+というエラーが出てしまいました。C#ではジェネリックを`<T>`のように書くのですが、どうやらこれが JSX とみなされてしまっているようでした。
+
+とはいえコードブロックに記述すれば何も問題はないので、コードはコードブロック内に書くようにします。
+
+## MDX での katex
+
+またも MDX の話ですが、Gatsby で用意されている[gatsby-remark-katex](https://www.gatsbyjs.com/plugins/gatsby-remark-katex/)を利用しても数式が表示されなくなってしましました。
+
+[同様の症状](https://github.com/gatsbyjs/gatsby/issues/21866)は報告されていて、とりあえず remark-math、remark-html-katex で数式は出せるようになりました。とりあえずはよかった。
+
+## おわりに
+
+新しいブログは結構満足しているので定期的に更新してきたいです。

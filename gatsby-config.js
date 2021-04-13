@@ -114,7 +114,7 @@ module.exports = {
                   sort: { order: DESC, fields: [frontmatter___published] },
                 ) {
                   nodes {
-                    excerpt
+                    excerpt(truncate: true)
                     html
                     fields {
                       slug

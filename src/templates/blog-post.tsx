@@ -149,7 +149,7 @@ export const pageQuery = graphql`
   ) {
     mdx(id: { eq: $id }) {
       id
-      excerpt(pruneLength: 160)
+      excerpt(truncate: true, pruneLength: 160)
       body
       frontmatter {
         title

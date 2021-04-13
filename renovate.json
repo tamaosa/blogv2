@@ -1,5 +1,21 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "timezone": "Asia/Tokyo",
+  "schedule": "every weekend",
+  "labels": [
+    "dependencies"
+  ],
+  "patch": {
+    "automerge": true
+  },
+  "minor": {
+    "groupName": "all dependencies"
+  },
+  "vulnerabilityAlerts": {
+    "labels": [
+      "security"
+    ]
+  }
 }

@@ -1,6 +1,7 @@
 ---
 title: USBにPython環境を作ってみた(Windows)
 published: 2021-01-13
+updated: 2021-05-12
 tags:
   - Python
   - VScode
@@ -10,7 +11,7 @@ tags:
 
 ## Python 環境
 
-USB に Python 環境を用意する選択肢はいくつかありますが今回は[embeddable package](https://docs.python.org/ja/3/using/windows.html#the-embeddable-package)使うことにしました（容量少ないしね！）。
+USB に Python 環境を用意する選択肢はいくつかありますが今回は[embeddable package](https://docs.python.org/ja/3/using/windows.html#the-embeddable-package)使うことにしました（容量少ないし！）。
 
 ### embeddable package
 
@@ -70,12 +71,15 @@ python -m pip install numpy
 
 このままでは味気ないので拡張機能も少々入れることにします。
 
-Zip 版の VS Code に拡張機能をいれるにはまず解凍したフォルダー内に`data`フォルダーを作成します。作成するとセッション状態、設定、拡張機能などのすべてのデータが`data`フォルダー内に保存されます（`data`フォルダーがない場合ローカルの設定を見に行くぽいです）。その後 VS Code を起動します。
+Zip 版の VS Code に拡張機能をいれるにはまず解凍したフォルダー内に`data`フォルダーを作成します。作成するとセッション状態、設定、拡張機能などのすべてのデータが`data`フォルダー内に保存されます。詳細は、[Portable Mode in Visual Studio Code](https://code.visualstudio.com/docs/editor/portable)を参照してください。
 
 あとはいつも通り拡張機能をインストールするだけです。今回は Python の開発（それもちょっとしたもの）のみが目的なのでこの辺りをいれておけば十分かなと思います。
 
 - [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 - [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+
+(2021/05/12 追記)
+[2021/5 の Python extension](https://devblogs.microsoft.com/python/python-in-visual-studio-code-may-2021-release/) からデフォルトの language server として Pylance が採用されバンドルもされているようなので Pylance を追加でインストールする必要はなくなったみたいですね。
 
 ### setting.json
 
@@ -88,9 +92,9 @@ Zip 版の VS Code に拡張機能をいれるにはまず解凍したフォル�
 }
 ```
 
-`${execPath}`は VS Code で定義されている変数で`code.exe`のパスを表します。
+`${execPath}`は VS Code で定義されている変数で`code.exe`のパスを表します( [Visual Studio Code Variables Reference](https://code.visualstudio.com/docs/editor/variables-reference))。
 
-今回`python.exe`も`code.exe`も USB メモリ内にあることを想定しているので、`${execPath}`から相対パスで指定するので手っ取り早いです。
+今回`python.exe`も`code.exe`も USB メモリ内にあることを想定しているので、**`${execPath}`から相対パスで指定する**のが手っ取り早いと思います。
 
 ## おわりに
 
@@ -100,6 +104,4 @@ Zip 版の VS Code に拡張機能をいれるにはまず解凍したフォル�
 
 - [Windows で Python を使う | Python](https://docs.python.org/ja/3/using/windows.html#using-python-on-windows)
 - [超軽量、超高速な配布用 Python「embeddable python」](https://qiita.com/mm_sys/items/1fd3a50a930dac3db299)
-- [インストール | pip](https://kurozumi.github.io/pip/installing.html#id8)
-- [Portable Mode in Visual Studio Code](https://code.visualstudio.com/docs/editor/portable)
-- [Visual Studio Code Variables Reference](https://code.visualstudio.com/docs/editor/variables-reference)
+- [インストール | pip](https://kurozumi.github.io/pip/installing.html)

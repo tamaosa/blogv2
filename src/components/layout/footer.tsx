@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { css } from "@emotion/react"
 
 import Bio from "../bio"
+import { rhythm } from "../../utils/typography"
 
 const bioStyle = css`
   display: flex;
@@ -10,6 +11,7 @@ const bioStyle = css`
 `
 
 const copyrightStyle = css`
+  margin-top: ${rhythm(1 / 2)};
   text-align: right;
 `
 

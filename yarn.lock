@@ -1224,10 +1224,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/kosugi-maru@4.4.2":
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/kosugi-maru/-/kosugi-maru-4.4.2.tgz#6b8186024efff64507e62b5bdaa323196143d2a2"
-  integrity sha512-hB41EtHq1yNXCIe37ZDSDiQpn+Zf2jsv7cs3j6DUyt4ZOAsWVSkydJOaYsjVdck5PEmklV5p2BaZGD04mhPd4w==
+"@fontsource/kosugi-maru@4.4.5":
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/@fontsource/kosugi-maru/-/kosugi-maru-4.4.5.tgz#8ef2c39b13234cc580a38611005f9328c6e97663"
+  integrity sha512-W1uKJWey10koassT2NVtjg82rE6F55xqCD6WCJGoV2d7cBdexpzQ9k3cATE9OYt4omCChch1PEYxY1GoN+QtXg==
 
 "@fortawesome/fontawesome-common-types@^0.2.35":
   version "0.2.35"

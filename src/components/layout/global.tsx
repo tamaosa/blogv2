@@ -48,6 +48,12 @@ const GlobalStyle: React.FC = () => (
         fill: var(--fg);
         margin-right: ${rhythm(1 / 8)};
       }
+
+      hr {
+        background: hsla(0,0%,0%,0.2);
+        border: none;
+        height: 1.5px;
+      }
     `}
   />
 )

@@ -13,8 +13,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       {
         blogs: allMdx(
-          sort: { fields: [frontmatter___published], order: ASC }
-          limit: 1000
+          sort: { fields: [frontmatter___published], order: DESC }
         ) {
           nodes {
             id
@@ -26,7 +25,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
           }
         }
-        tags: allMdx(limit: 1000) {
+        tags: allMdx {
           group(field: frontmatter___tags) {
             fieldValue
             totalCount
@@ -53,8 +52,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (posts.length > 0) {
     posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+      const nextPostId = index === 0 ? null : posts[index - 1].id
+      const previousPostId = index === posts.length - 1 ? null : posts[index + 1].id
 
       createPage({
         path: post.fields.slug,

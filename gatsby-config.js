@@ -8,7 +8,7 @@ module.exports = {
     description: `tamaosa's blog!`,
     siteUrl: `https://www.tamaosa.com`,
     social: {
-      twitter: `tamaosa11`,
+      twitter: `_tamaosa`,
       github: `tamaosa`
     },
     repository: `https://github.com/tamaosa/blogv2`

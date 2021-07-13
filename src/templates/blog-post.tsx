@@ -176,7 +176,10 @@ export const pageQuery = graphql`
     }
     allMdx(
       sort: { fields: [frontmatter___published], order: DESC }
-      filter: { frontmatter: { tags: { in: $tags } }, id: { ne: $id } }
+      filter: {
+        frontmatter: { noindex: { ne: true }, tags: { in: $tags } }
+        id: { ne: $id }
+      }
       limit: 5
     ) {
       nodes {

@@ -7,6 +7,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
   const tagPost = path.resolve(`./src/templates/tag-post.tsx`)
+  const noindexPost = path.resolve(`./src/templates/noindex-post.tsx`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -14,6 +15,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       {
         blogs: allMdx(
           sort: { fields: [frontmatter___published], order: DESC }
+          filter: { frontmatter: { noindex: { ne: true } } }
         ) {
           nodes {
             id
@@ -25,10 +27,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
           }
         }
-        tags: allMdx {
+        tags: allMdx(
+          filter: { frontmatter: { noindex: { ne: true } } }
+        ) {
           group(field: frontmatter___tags) {
             fieldValue
             totalCount
+          }
+        }
+        noindexes: allMdx(
+          sort: { fields: [frontmatter___published], order: DESC }
+          filter: { frontmatter: { noindex: { eq: true } } }
+        ) {
+          nodes {
+            id
+            fields {
+              slug
+            }
           }
         }
       }
@@ -45,6 +60,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.blogs.nodes
   const tags = result.data.tags.group
+  const noindexes = result.data.noindexes.nodes
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -76,6 +92,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         context: {
           tag: tag.fieldValue,
           count: tag.totalCount,
+        },
+      })
+    })
+  }
+
+  if (noindexes.length > 0) {
+    noindexes.forEach((post) => {
+      createPage({
+        path: post.fields.slug,
+        component: noindexPost,
+        context: {
+          id: post.id,
         },
       })
     })
@@ -137,6 +165,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       published: Date @dateformat
       updated: Date @dateformat
       tags: [String]
+      noindex: Boolean
     }
 
     type Fields {

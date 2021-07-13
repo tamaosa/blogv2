@@ -112,7 +112,8 @@ module.exports = {
             query: `
               {
                 allMdx(
-                  sort: { order: DESC, fields: [frontmatter___published] },
+                  sort: { order: DESC, fields: [frontmatter___published] }
+                  filter: {frontmatter: {noindex: {ne: true}}}
                 ) {
                   nodes {
                     excerpt(truncate: true)

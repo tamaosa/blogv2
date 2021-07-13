@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -21,17 +21,20 @@ const BlogIndex: React.FC<Props> = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="All posts" />
-      <h1>Home</h1>
-      <ol style={{ listStyle: `none` }}>
+      <SEO title="Noindex Pages" noindex={true} />
+      <h1>Noindex Pages</h1>
+      <p>公開されないかわいそうな記事たちが集まってくる場所</p>
+      <ul>
         {posts.map(post => {
           return (
             <li key={post.fields.slug}>
-              <ArticleItem {...post} />
+              <Link to={post.fields.slug} aria-label="記事へのリンク">
+                {post.frontmatter.title}
+              </Link>
             </li>
           )
         })}
-      </ol>
+      </ul>
     </Layout>
   )
 }
@@ -42,7 +45,7 @@ export const pageQuery = graphql`
   query {
     allMdx(
       sort: { fields: [frontmatter___published], order: DESC }
-      filter: { frontmatter: { noindex: { ne: true } } }
+      filter: { frontmatter: { noindex: { eq: true } } }
     ) {
       nodes {
         ...ArticleItems

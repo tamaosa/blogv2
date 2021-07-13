@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 const NotFoundPage: React.FC = ({}) => {
   return (
     <Layout>
-      <SEO title="about" />
+      <SEO title="about" noindex={true} />
       <h1>About</h1>
       <h2>著者について</h2>
       <p>

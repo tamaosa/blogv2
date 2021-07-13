@@ -9,6 +9,7 @@ type Props = {
   lang?: string
   meta?: any[]
   title?: string
+  noindex?: boolean
 }
 
 const SEO: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const SEO: React.FC<Props> = ({
   lang = "ja",
   meta = [],
   title,
+  noindex = false,
 }) => {
   const { site } = useStaticQuery<{
     site: {
@@ -46,6 +48,14 @@ const SEO: React.FC<Props> = ({
     ? `${title} - ${site.siteMetadata.title}`
     : site.siteMetadata.title
   const metaType = title ? `article` : `website`
+  const metaNoindex = noindex
+    ? [
+        {
+          name: `robots`,
+          content: `noindex,follow`,
+        },
+      ]
+    : []
 
   return (
     <Helmet
@@ -102,7 +112,7 @@ const SEO: React.FC<Props> = ({
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ].concat(metaNoindex, meta)}
     />
   )
 }

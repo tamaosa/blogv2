@@ -17,7 +17,7 @@ const rotate = keyframes`
 const NotFoundPage: React.FC = ({}) => {
   return (
     <Layout>
-      <SEO title="Not Found" />
+      <SEO title="Not Found" noindex={true} />
       <h1>😢Not Found</h1>
       <p>お探しのページは移動されたか削除されたようです…</p>
       <div>

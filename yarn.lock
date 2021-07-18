@@ -13080,9 +13080,9 @@ strip-outer@^1.0.0, strip-outer@^1.0.1:
     escape-string-regexp "^1.0.2"
 
 strtok3@^6.0.3:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/strtok3/-/strtok3-6.2.0.tgz#7c24e74a9a24c7f2b976e4469654d459e6795d91"
-  integrity sha512-hBbPN4+f9fypbfTs0NImALgzYcb6k/blFr2mJVX6bUOmJCbXe/trDHdIC+Ir5XUXRMGFvq487ecwLitDoHVoew==
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/strtok3/-/strtok3-6.2.1.tgz#13544a93d1620eb7c0ca700eea85b565e252400f"
+  integrity sha512-KVEUjM/+GSNxSS1xRlxCkBOTljK9IIwjLOmIjgBsTYFW5xt3QHxVYLsqFXqvwH1iXROcnDuv+Z1JH/Sm60HTVg==
   dependencies:
     peek-readable "^4.0.0"
 

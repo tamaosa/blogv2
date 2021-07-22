@@ -3,7 +3,6 @@ export type Frontmatter = {
   published: string
   updated?: string
   tags?: string[]
-  noindex?: boolean
 }
 
 export type Mdx<Keys extends keyof Frontmatter> = {

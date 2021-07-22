@@ -40,10 +40,7 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    allMdx(
-      sort: { fields: [frontmatter___published], order: DESC }
-      filter: { frontmatter: { noindex: { ne: true } } }
-    ) {
+    allMdx(sort: { fields: [frontmatter___published], order: DESC }) {
       nodes {
         ...ArticleItems
       }

@@ -6,11 +6,11 @@ import SEO from "../components/seo"
 const NotFoundPage: React.FC = ({}) => {
   return (
     <Layout>
-      <SEO title="about" noindex={true} />
+      <SEO title="about" />
       <h1>About</h1>
       <h2>著者について</h2>
       <p>
-        某メーカーの見習いソフトウェア開発者です。業務では開発製品のソフトウェアに関連することは全部やることになるらしい…学生時代は数値計算の勉強をしていました。
+        某メーカーの見習いソフトウェア開発者です。業務では開発製品のソフトウェアに関連することは全部やることになるらしい…
       </p>
       <h2>アクセス解析ツールについて</h2>
       <p>

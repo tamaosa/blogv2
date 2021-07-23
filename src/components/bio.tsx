@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { css } from "@emotion/react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -28,6 +28,12 @@ const authorStyle = css`
     margin: 0;
     font-size: ${scale(-1 / 8).fontSize};
     line-height: ${scale(-1 / 8).lineHeight};
+  }
+
+  & > span > a {
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--fg);
   }
 `
 
@@ -74,8 +80,9 @@ const Bio: React.FC = () => {
         />
       </div>
       <div css={authorStyle}>
-        <strong>{author.name}</strong>
-
+        <span>
+          <Link to="/about">{author.name}</Link>
+        </span>
         <a
           href={`https://github.com/${social.github}`}
           target="_blank"

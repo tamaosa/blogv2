@@ -22,7 +22,7 @@ const Footer: React.FC = () => (
     </div>
     <div css={copyrightStyle}>
       <small>
-        <Link to="/about">About</Link> | © 2019 Tamaosa, Built with
+        Built with
         {` `}
         <a
           target="_blank"
@@ -31,6 +31,7 @@ const Footer: React.FC = () => (
         >
           Gatsby
         </a>
+        , © 2019 Tamaosa
       </small>
     </div>
   </footer>

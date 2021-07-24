@@ -1,5 +1,6 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
+import { css } from "@emotion/react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -32,6 +33,14 @@ const BlogIndex: React.FC<Props> = ({ data }) => {
           )
         })}
       </ol>
+      <small
+        css={css`
+          margin: 0;
+          float: right;
+        `}
+      >
+        <Link to="/scrap">→scrap</Link>
+      </small>
     </Layout>
   )
 }

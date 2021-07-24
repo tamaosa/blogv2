@@ -119,7 +119,8 @@ module.exports = {
             query: `
               {
                 allMdx(
-                  sort: { order: DESC, fields: [frontmatter___published] },
+                  sort: { order: DESC, fields: [frontmatter___published] }
+                  filter: {fileAbsolutePath: {regex: "/entries/"}}
                 ) {
                   nodes {
                     excerpt(truncate: true)

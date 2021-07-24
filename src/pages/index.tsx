@@ -36,7 +36,7 @@ const BlogIndex: React.FC<Props> = ({ data }) => {
           float: right;
         `}
       >
-        <Link to="/scrap">→scrap</Link>
+        <Link to="/scrap">scrap→</Link>
       </small>
     </Layout>
   )

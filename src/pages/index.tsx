@@ -4,15 +4,12 @@ import { css } from "@emotion/react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import {
-  ArticleItem,
-  ArticleItemType,
-} from "../components/article/article-item"
+import { EntryItem, EntryItemType } from "../components/article/entry-item"
 
 type Props = {
   data: {
     allMdx: {
-      nodes: Array<ArticleItemType>
+      nodes: Array<EntryItemType>
     }
   }
 }
@@ -28,7 +25,7 @@ const BlogIndex: React.FC<Props> = ({ data }) => {
         {posts.map(post => {
           return (
             <li key={post.fields.slug}>
-              <ArticleItem {...post} />
+              <EntryItem {...post} />
             </li>
           )
         })}
@@ -54,7 +51,7 @@ export const pageQuery = graphql`
       filter: { fileAbsolutePath: { regex: "/entries/" } }
     ) {
       nodes {
-        ...ArticleItems
+        ...EntryItems
       }
     }
   }

@@ -9,10 +9,7 @@ import { Mdx } from "../types/mdx"
 import { ArticleDate } from "../components/article/article-date"
 import Tags from "../components/tags"
 import { rhythm } from "../utils/typography"
-import {
-  ArticleItem,
-  ArticleItemType,
-} from "../components/article/article-item"
+import { EntryItem, EntryItemType } from "../components/article/entry-item"
 
 type Props = {
   data: {
@@ -20,7 +17,7 @@ type Props = {
     previous: Mdx<"title">
     next: Mdx<"title">
     allMdx: {
-      nodes: Array<ArticleItemType>
+      nodes: Array<EntryItemType>
     }
   }
 }
@@ -108,7 +105,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
               {posts.map(post => {
                 return (
                   <li key={post.fields.slug}>
-                    <ArticleItem {...post} />
+                    <EntryItem {...post} />
                   </li>
                 )
               })}
@@ -176,11 +173,15 @@ export const pageQuery = graphql`
     }
     allMdx(
       sort: { fields: [frontmatter___published], order: DESC }
-      filter: { frontmatter: { tags: { in: $tags } }, id: { ne: $id } }
+      filter: {
+        fields: { collection: { eq: "entries" } }
+        frontmatter: { tags: { in: $tags } }
+        id: { ne: $id }
+      }
       limit: 5
     ) {
       nodes {
-        ...ArticleItems
+        ...EntryItems
       }
     }
   }

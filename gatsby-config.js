@@ -19,8 +19,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/content/entries`,
+        name: `entries`,
       },
     },
     {
@@ -28,6 +28,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/content/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `scraps`,
+        path: `${__dirname}/content/scraps`,
       },
     },
     {
@@ -112,7 +119,8 @@ module.exports = {
             query: `
               {
                 allMdx(
-                  sort: { order: DESC, fields: [frontmatter___published] },
+                  sort: { order: DESC, fields: [frontmatter___published] }
+                  filter: {fields: {collection: {eq: "entries"}}}
                 ) {
                   nodes {
                     excerpt(truncate: true)
@@ -161,7 +169,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: [`/tags/*`],
+        exclude: [`/tags/*`, `/scrap`, `/scraps/*`],
       },
     },
     {

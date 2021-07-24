@@ -3,15 +3,12 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import {
-  ArticleItem,
-  ArticleItemType,
-} from "../components/article/article-item"
+import { EntryItem, EntryItemType } from "../components/article/entry-item"
 
 type Props = {
   data: {
     allMdx: {
-      nodes: Array<ArticleItemType>
+      nodes: Array<EntryItemType>
     }
   }
   pageContext: {
@@ -34,7 +31,7 @@ const TagPost: React.FC<Props> = ({ data, pageContext }) => {
         {posts.map(post => {
           return (
             <li key={post.fields.slug}>
-              <ArticleItem {...post} />
+              <EntryItem {...post} />
             </li>
           )
         })}
@@ -46,13 +43,16 @@ const TagPost: React.FC<Props> = ({ data, pageContext }) => {
 export default TagPost
 
 export const pageQuery = graphql`
-  query($tag: String) {
+  query ($tag: String) {
     allMdx(
       sort: { fields: [frontmatter___published], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: {
+        fields: { collection: { eq: "entries" } }
+        frontmatter: { tags: { in: [$tag] } }
+      }
     ) {
       nodes {
-        ...ArticleItems
+        ...EntryItems
       }
     }
   }

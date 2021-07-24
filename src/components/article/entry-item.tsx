@@ -7,7 +7,7 @@ import { rhythm } from "../../utils/typography"
 import { ArticleDate } from "./article-date"
 import Tags from "../tags"
 
-export type ArticleItemType = Pick<
+export type EntryItemType = Pick<
   Mdx<"title" | "published" | "updated" | "tags">,
   "fields" | "frontmatter"
 >
@@ -31,10 +31,7 @@ const subTitleStyle = css`
   }
 `
 
-export const ArticleItem: React.FC<ArticleItemType> = ({
-  fields,
-  frontmatter,
-}) => {
+export const EntryItem: React.FC<EntryItemType> = ({ fields, frontmatter }) => {
   const title = frontmatter.title || fields.slug
   return (
     <article>
@@ -63,7 +60,7 @@ export const ArticleItem: React.FC<ArticleItemType> = ({
 }
 
 export const query = graphql`
-  fragment ArticleItems on Mdx {
+  fragment EntryItems on Mdx {
     fields {
       slug
     }

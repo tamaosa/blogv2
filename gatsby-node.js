@@ -7,6 +7,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
   const tagPost = path.resolve(`./src/templates/tag-post.tsx`)
+  const scrapPost = path.resolve(`./src/templates/scrap-post.tsx`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -14,6 +15,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       {
         blogs: allMdx(
           sort: { fields: [frontmatter___published], order: DESC }
+          filter: {fields: {collection: {eq: "entries"}}}
         ) {
           nodes {
             id
@@ -25,10 +27,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
           }
         }
-        tags: allMdx {
+        tags: allMdx(filter: {fields: {collection: {eq: "entries"}}}) {
           group(field: frontmatter___tags) {
             fieldValue
             totalCount
+          }
+        }
+        scraps: allMdx(
+          sort: { fields: [frontmatter___published], order: DESC }
+          filter: {fields: {collection: {eq: "scraps"}}}
+        ) {
+          nodes {
+            id
+            fields {
+              slug
+            }
           }
         }
       }
@@ -45,6 +58,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.blogs.nodes
   const tags = result.data.tags.group
+  const scraps = result.data.scraps.nodes
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -80,18 +94,38 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
+
+  if (scraps.length > 0) {
+    scraps.forEach((post) => {
+      createPage({
+        path: post.fields.slug,
+        component: scrapPost,
+        context: {
+          id: post.id,
+        },
+      })
+    })
+  }
+
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+    const filePath = createFilePath({ node, getNode })
+    const instanceName = getNode(node.parent).sourceInstanceName
 
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value: instanceName === "scraps" ? `/scraps${filePath}` : filePath,
+    })
+
+    createNodeField({
+      name: `collection`,
+      node,
+      value: instanceName,
     })
   }
 }

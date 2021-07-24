@@ -15,7 +15,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       {
         blogs: allMdx(
           sort: { fields: [frontmatter___published], order: DESC }
-          filter: {fileAbsolutePath: {regex: "/entries/"}}
+          filter: {fields: {collection: {eq: "entries"}}}
         ) {
           nodes {
             id
@@ -27,7 +27,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
           }
         }
-        tags: allMdx(filter: {fileAbsolutePath: {regex: "/entries/"}}) {
+        tags: allMdx(filter: {fields: {collection: {eq: "entries"}}}) {
           group(field: frontmatter___tags) {
             fieldValue
             totalCount
@@ -35,7 +35,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
         scraps: allMdx(
           sort: { fields: [frontmatter___published], order: DESC }
-          filter: {fileAbsolutePath: {regex: "/scraps/"}}
+          filter: {fields: {collection: {eq: "scraps"}}}
         ) {
           nodes {
             id
@@ -98,7 +98,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (scraps.length > 0) {
     scraps.forEach((post) => {
       createPage({
-        path: `/scraps${post.fields.slug}`,
+        path: post.fields.slug,
         component: scrapPost,
         context: {
           id: post.id,
@@ -113,12 +113,19 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({ node, getNode })
+    const filePath = createFilePath({ node, getNode })
+    const instanceName = getNode(node.parent).sourceInstanceName
 
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value: instanceName === "scraps" ? `/scraps${filePath}` : filePath,
+    })
+
+    createNodeField({
+      name: `collection`,
+      node,
+      value: instanceName,
     })
   }
 }

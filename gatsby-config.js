@@ -120,7 +120,7 @@ module.exports = {
               {
                 allMdx(
                   sort: { order: DESC, fields: [frontmatter___published] }
-                  filter: {fileAbsolutePath: {regex: "/entries/"}}
+                  filter: {fields: {collection: {eq: "entries"}}}
                 ) {
                   nodes {
                     excerpt(truncate: true)

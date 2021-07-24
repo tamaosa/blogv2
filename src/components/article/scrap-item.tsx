@@ -35,10 +35,10 @@ const scrapStyle = css`
 `
 
 export const ScrapItem: React.FC<ScrapItemType> = ({ fields, frontmatter }) => {
-  const title = frontmatter.title || `/scraps${fields.slug}`
+  const title = frontmatter.title || fields.slug
   return (
     <article css={scrapStyle}>
-      <Link to={`/scraps${fields.slug}`} aria-label="記事へのリンク">
+      <Link to={fields.slug} aria-label="記事へのリンク">
         <h3>{title}</h3>
         <p>
           <ArticleDate published={frontmatter.published} />

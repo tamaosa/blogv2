@@ -28,7 +28,7 @@ const ScrapIndex: React.FC<Props> = ({ data }) => {
       <h1>Scrap</h1>
       <div css={ScrapIndexStyle}>
         {posts.map(post => {
-          return <ScrapItem {...post} key={`/scraps${post.fields.slug}`} />
+          return <ScrapItem {...post} key={post.fields.slug} />
         })}
       </div>
     </Layout>
@@ -41,7 +41,7 @@ export const pageQuery = graphql`
   query {
     allMdx(
       sort: { fields: [frontmatter___published], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/scraps/" } }
+      filter: { fields: { collection: { eq: "scraps" } } }
     ) {
       nodes {
         ...ScrapItems

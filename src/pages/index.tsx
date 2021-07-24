@@ -48,7 +48,7 @@ export const pageQuery = graphql`
   query {
     allMdx(
       sort: { fields: [frontmatter___published], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/entries/" } }
+      filter: { fields: { collection: { eq: "entries" } } }
     ) {
       nodes {
         ...EntryItems

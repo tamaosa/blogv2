@@ -46,10 +46,13 @@ const TagPost: React.FC<Props> = ({ data, pageContext }) => {
 export default TagPost
 
 export const pageQuery = graphql`
-  query($tag: String) {
+  query ($tag: String) {
     allMdx(
       sort: { fields: [frontmatter___published], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: {
+        fileAbsolutePath: { regex: "/entries/" }
+        frontmatter: { tags: { in: [$tag] } }
+      }
     ) {
       nodes {
         ...ArticleItems

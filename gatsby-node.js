@@ -14,6 +14,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       {
         blogs: allMdx(
           sort: { fields: [frontmatter___published], order: DESC }
+          filter: {fileAbsolutePath: {regex: "/entries/"}}
         ) {
           nodes {
             id
@@ -25,7 +26,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
           }
         }
-        tags: allMdx {
+        tags: allMdx(filter: {fileAbsolutePath: {regex: "/entries/"}}) {
           group(field: frontmatter___tags) {
             fieldValue
             totalCount

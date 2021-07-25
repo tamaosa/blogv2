@@ -1,0 +1,87 @@
+---
+title: ディレクトリ毎にallMarkdownRemark(allMdx)をフィルタリングする
+published: 2021-07-25
+tags:
+  - Gatsby
+---
+
+## はじめに
+
+最近、別のディレクトリに分けておいた md や mdx を各ディレクトリ毎に取得したいことがありました。ただ、[gatsby-transformer-remark](https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/)や[gatsby-plugin-mdx](https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/)で使えるようになる`allMarkdownRemark`や`allMdx`を使うと、基本的に[gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/)で FileNode に追加したすべての md(mdx)を取得してしまいます。
+
+そこでディレクトリ毎に`filter`する方法をメモしておきます。
+
+以下では次のようにディレクトリを分けていることを前提とします。
+
+```js
+{
+  resolve: `gatsby-source-filesystem`,
+  options: {
+    name: `dir1`,
+    path: `${__dirname}/content/dir1`,
+  },
+},
+{
+  resolve: `gatsby-source-filesystem`,
+  options: {
+    name: `dir2`,
+    path: `${__dirname}/content/dir2`,
+  },
+},
+```
+
+## fileAbsolutePath を使う
+
+手っ取り早いのは正規表現を使って`fileAbsolutePath`をフィルタリングする方法です。たとえば次のようにします。
+
+```graphql
+allMdx(filter: {fileAbsolutePath: {regex: "/dir1/"}}) {
+  nodes {
+    id
+  }
+}
+```
+
+基本的にはこの方法で問題なさそうです。
+
+## sourceInstanceName を使う
+
+正規表現を使う方法でまあ十分なのですがもう少しスマートな方法がないかと調べていると[いい感じ](https://github.com/gatsbyjs/gatsby/issues/1634#issuecomment-388899348)の方法が紹介されてました。
+
+gatsby-source-filesystem では`sourceInstanceName`（オプションの name）を指定することができます。この`sourceInstanceName`は FileNode にはあるのですが、残念ながら Markdown(Mdx)Node には含まれていません。そこで、これを Markdown(Mdx)Node に追加します。具体的には gatsby-node.js で以下のようにします。
+
+```js
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === `Mdx`) {
+    const value = getNode(node.parent).sourceInstanceName
+
+    createNodeField({
+      name: `sourceInstanceName`,
+      node,
+      value,
+    })
+  }
+}
+```
+
+すると`sourceInstanceName`が使えるようになるので以下のようにフィルタリングできるようになります。
+
+```graphql
+allMdx(filter: {fields: {sourceInstanceName: {eq: "dir1"}}}) {
+  nodes {
+    id
+  }
+}
+```
+
+こちらの方が正規表現を利用するよりも安定しそうです。やったね。
+
+## さいごに
+
+こういことをすると`slug`もいじりたくなる場合が多いと思うのでついでにやっておくとよさそう。
+
+## 参考
+
+- [Question: How do I query based on gatsby-source-filesystem name? #1634](https://github.com/gatsbyjs/gatsby/issues/1634)

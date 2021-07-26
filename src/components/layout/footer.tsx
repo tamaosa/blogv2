@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { css } from "@emotion/react"
 
 import Bio from "../bio"
-import { rhythm } from "../../utils/typography"
+import { scale, rhythm } from "../../utils/typography"
 
 const bioStyle = css`
   display: flex;
@@ -11,8 +11,13 @@ const bioStyle = css`
 `
 
 const copyrightStyle = css`
+  font-size: ${scale(-1 / 8).fontSize};
   margin-top: ${rhythm(1 / 2)};
   text-align: right;
+  small {
+    display: block;
+    margin: 0;
+  }
 `
 
 const Footer: React.FC = () => (
@@ -21,6 +26,9 @@ const Footer: React.FC = () => (
       <Bio />
     </div>
     <div css={copyrightStyle}>
+      <small>
+        <Link to="/privacy-policy">Privacy Policy</Link>
+      </small>
       <small>
         Built with
         {` `}

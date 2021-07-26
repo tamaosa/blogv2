@@ -164,12 +164,12 @@ module.exports = {
         omitGoogleFont: true,
       },
     },
-    'gatsby-plugin-use-dark-mode',
+    `gatsby-plugin-use-dark-mode`,
     `gatsby-plugin-robots-txt`,
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: [`/tags/*`, `/scrap`, `/scraps/*`],
+        exclude: [`/scrap`, `/scraps/*`],
       },
     },
     {

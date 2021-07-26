@@ -6,6 +6,7 @@ import { css } from "@emotion/react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Mdx } from "../types/mdx"
+import { SiteMetadata } from "../types/site-metadata"
 import { ArticleDate } from "../components/article/article-date"
 import Tags from "../components/tags"
 import { rhythm } from "../utils/typography"
@@ -18,6 +19,9 @@ type Props = {
     next: Mdx<"title">
     allMdx: {
       nodes: Array<EntryItemType>
+    }
+    site: {
+      siteMetadata: Pick<SiteMetadata, "repository">
     }
   }
 }
@@ -66,6 +70,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
   const post = data.mdx
   const posts = data.allMdx.nodes
   const { previous, next } = data
+  const { repository } = data.site.siteMetadata
 
   return (
     <Layout>
@@ -88,7 +93,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
           <small>
             <a
               target="_blank"
-              href={`https://github.com/tamaosa/blogv2/discussions`}
+              href={`${repository}/discussions`}
               rel="external noopener"
             >
               （GitHubでディスカッションを開始）
@@ -182,6 +187,11 @@ export const pageQuery = graphql`
     ) {
       nodes {
         ...EntryItems
+      }
+    }
+    site {
+      siteMetadata {
+        repository
       }
     }
   }

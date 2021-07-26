@@ -23,7 +23,7 @@ const TagPost: React.FC<Props> = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <SEO title={tag} />
+      <SEO title={tag} noindex={true} />
       <h1>
         #{tag}({count})
       </h1>

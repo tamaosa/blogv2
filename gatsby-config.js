@@ -169,7 +169,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: [`/scrap`, `/scraps/*`],
+        exclude: [`/tags/*`, `/scrap`, `/scraps/*`],
       },
     },
     {

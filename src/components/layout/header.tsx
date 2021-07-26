@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import { css } from "@emotion/react"
+import { css, keyframes } from "@emotion/react"
 import useDarkMode from "use-dark-mode"
 
 import { rhythm, scale } from "../../utils/typography"
@@ -21,6 +21,16 @@ const titleStyle = css`
   }
 `
 
+const shaking = keyframes`
+    0% {transform: translate(0px, 0px)}
+    75% {transform: translate(0px, 0px)}
+    80% {transform: translate(0px, 2px)}
+    85% {transform: translate(2px, 0px)}
+    90% {transform: translate(0px, 2px)}
+    95% {transform: translate(2px, 0px)}
+    100% {transform: translate(0px, 0px)}
+`
+
 const buttonStyle = css`
   button {
     background: var(--bg);
@@ -30,6 +40,10 @@ const buttonStyle = css`
     outline: none;
     padding: 0;
     appearance: none;
+  }
+
+  button:hover {
+    animation: ${shaking} 2s infinite;
   }
 `
 

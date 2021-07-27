@@ -76,7 +76,7 @@ const PrivacyPolicyPage: React.FC = () => {
         >
           Twitter
         </a>
-        などからご気軽にご連絡ください。
+        などからお気軽にご連絡ください。
       </p>
     </Layout>
   )

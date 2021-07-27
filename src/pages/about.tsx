@@ -58,11 +58,20 @@ const AboutPage: React.FC = () => {
       </ul>
       <h2>お願い</h2>
       <p>
-        「記事の内容が誤っている。」「誤字がある。」などなど、当サイトへのご意見やご要望がありましたら
+        「記事の内容が誤っている」「誤字がある」などなど当サイトへのご意見ご要望がありましたら
+        <a
+          href={`https://twitter.com/${social.twitter}`}
+          target="_blank"
+          rel="external noopener"
+          aria-label={`Twitterアカウント`}
+        >
+          Twitter
+        </a>
+        などからお気軽にご連絡ください。とくに
         <a target="_blank" href={repository} rel="external noopener">
           GitHub
         </a>
-        などからご気軽にご連絡ください。とくにPRをいただけると大変ありがたいです。
+        からPRをいただけると大変ありがたいです。
       </p>
     </Layout>
   )

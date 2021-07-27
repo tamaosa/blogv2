@@ -12,11 +12,11 @@ export type ScrapItemType = Pick<
 >
 
 const scrapStyle = css`
-  width: 120px;
+  max-width: 40%;
   margin: ${rhythm(1 / 8)};
   padding: ${rhythm(1 / 8)};
-  font-size: ${scale(-1 / 2).fontSize};
-  background: hsla(0, 0%, 0%, 0.01);
+  border: 2.5px solid hsla(0, 0%, 0%, 0.2);
+  border-radius: 5px;
   transition: all 0.2s;
   a {
     color: var(--fg);
@@ -28,9 +28,10 @@ const scrapStyle = css`
   }
   p {
     margin: 0 0 ${rhythm(1 / 4)} 0;
+    font-size: ${scale(-1 / 2).fontSize};
   }
   &:hover {
-    transform: scale(1.1, 1.1);
+    transform: scale(1.03, 1.03);
   }
 `
 

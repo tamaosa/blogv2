@@ -1,15 +1,11 @@
 ---
-title: ディレクトリ毎にallMarkdownRemark(allMdx)をフィルタリングする
+title: ディレクトリ毎にallMarkdownRemark(allMdx)をフィルタリング
 published: 2021-07-25
-tags:
-  - Gatsby
 ---
 
 ## はじめに
 
 最近、別のディレクトリに分けておいた md や mdx を各ディレクトリ毎に取得したいことがありました。ただ、[gatsby-transformer-remark](https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/)や[gatsby-plugin-mdx](https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/)で使えるようになる`allMarkdownRemark`や`allMdx`を使うと、基本的に[gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/)で FileNode に追加したすべての md(mdx)を取得してしまいます。
-
-そこでディレクトリ毎に`filter`する方法をメモしておきます。
 
 以下では次のようにディレクトリを分けていることを前提とします。
 
@@ -77,10 +73,6 @@ allMdx(filter: {fields: {sourceInstanceName: {eq: "dir1"}}}) {
 ```
 
 こちらの方が正規表現を利用するよりも安定しそうです。やったね。
-
-## さいごに
-
-こういことをすると`slug`もいじりたくなる場合が多いと思うのでついでにやっておくとよさそう。
 
 ## 参考
 

@@ -168,15 +168,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.tamaosa.com',
-        sitemap: 'https://www.tamaosa.com/sitemap.xml',
         policy: [{ userAgent: 'Googlebot-Image', disallow: '/' }, { userAgent: '*', allow: '/' }]
       }
     },
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: [`/tags/*`, `/scrap`, `/scraps/*`],
+        excludes: [`/tags/*`, `/scrap`, `/scraps/*`],
       },
     },
     {

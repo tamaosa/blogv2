@@ -49,9 +49,9 @@
     "react-helmet": "6.1.0",
     "react-switch": "6.0.0",
     "react-typography": "0.16.20",
-    "rehype-katex": "4.0.0",
-    "remark-html-katex": "3.0.0",
-    "remark-math": "3.0.1",
+    "rehype-katex": "6.0.1",
+    "remark-html-katex": "4.0.1",
+    "remark-math": "5.1.0",
     "typography": "0.16.21",
     "use-dark-mode": "2.3.1"
   },

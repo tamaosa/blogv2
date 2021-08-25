@@ -93,10 +93,10 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
           <small>
             <a
               target="_blank"
-              href={`${repository}/discussions`}
+              href={`${repository}/tree/master/content/entries${post.fields.slug}index.mdx`}
               rel="external noopener"
             >
-              （GitHubでディスカッションを開始）
+              （GitHubで編集を提案）
             </a>
           </small>
           <hr />
@@ -158,6 +158,9 @@ export const pageQuery = graphql`
         published
         updated
         tags
+      }
+      fields {
+        slug
       }
     }
     previous: mdx(id: { eq: $previousPostId }) {

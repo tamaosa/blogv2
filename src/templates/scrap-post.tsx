@@ -57,7 +57,9 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
         </footer>
       </article>
       <nav>
-        <Link to="/scrap">←scrap</Link>
+        <small>
+          <Link to="/scrap">←scrap</Link>
+        </small>
       </nav>
     </Layout>
   )

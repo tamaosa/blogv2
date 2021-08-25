@@ -119,7 +119,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value: instanceName === "scraps" ? `/scraps${filePath}` : filePath,
+      value: instanceName === "scraps" ? `/scrap${filePath}` : filePath,
     })
 
     createNodeField({

@@ -1,0 +1,68 @@
+---
+title: Github App
+published: 2021-08-26
+---
+
+Github Apps 関連のめも
+
+## 目次
+
+- [Renovate](#Renovate)
+- [Imgbot](#Imgbot)
+- [参考](#参考)
+
+## Renovate
+
+依存関係の更新を自動化してくれる。同様のツールに[Dependabot](https://dependabot.com/)もあるけど、Renovate はより細かなことができるそう。
+
+<https://docs.renovatebot.com/>
+
+基本的に無料で利用できるのでありがたい。
+
+### 設定
+
+基本的にはプロジェクトのルートに`renovate.json`を用意して、ここに設定を書き込んでいく形（他の方法でも可。たとえば`package.json`に記述することも可能）。この設定項目がやたらと多くてビビる（[公式](https://docs.renovatebot.com/configuration-options/)参照）。
+
+以下例
+
+```json
+{
+  "extends": ["config:base"], //デフォルトのプリセットを継承
+  "timezone": "Asia/Tokyo", //タイムゾーン
+  "schedule": "every weekend", //毎週末に更新
+  "labels": ["dependencies"], //Renovate が作成する PRのラベルをdependencies
+  "packageRules": [
+    {
+      //devDependenciesのlint, prettierは自動マージ
+      "matchDepTypes": ["devDependencies"],
+      "matchPackagePatterns": ["lint", "prettier"],
+      "automerge": true
+    },
+    {
+      //minor, patchは自動マージ
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+  ],
+  "vulnerabilityAlerts": {
+    //脆弱性が含まれる場合はPRのラベルをsecurity
+    "labels": ["security"]
+  },
+  "lockFileMaintenance": {
+    //ロックファイルの更新を有効にして自動マージ
+    "enabled": true,
+    "automerge": true
+  }
+}
+```
+
+## Imgbot
+
+リポジトリに上がっている画像を圧縮した PR を送ってくれる。基本的に無料だありがたい。サムネイル画像とか多用しているブログとかは便利かも。
+
+<https://imgbot.net/>
+
+## 参考
+
+- [Renovate documentation](https://docs.renovatebot.com/)

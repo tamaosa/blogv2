@@ -5,6 +5,7 @@ import { css } from "@emotion/react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Ad from "../components/ad"
 import { Mdx } from "../types/mdx"
 import { SiteMetadata } from "../types/site-metadata"
 import { ArticleDate } from "../components/article/article-date"
@@ -103,6 +104,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
         </footer>
       </article>
       <nav>
+        <Ad path={post.fields.slug} />
         {posts.length > 0 && (
           <div css={relatedStyle}>
             <h2>関連記事</h2>

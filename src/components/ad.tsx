@@ -30,6 +30,7 @@ const Ad: React.FC<Props> = ({ path }) => {
   }, [path])
   return (
     <ins
+      className="adsbygoogle"
       css={adStyle}
       data-ad-client={process.env.GATSBY_GOOGLE_AD_CLIENT}
       data-ad-slot={process.env.GATSBY_GOOGLE_AD_SLOT}

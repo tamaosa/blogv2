@@ -22,17 +22,21 @@ const scrapStyle = css`
     color: var(--fg);
     text-decoration: none;
   }
-  h3 {
-    margin: 0 0 ${rhythm(1 / 4)} 0;
-    font-size: ${scale(0).fontSize};
-  }
-  p {
-    margin: 0 0 ${rhythm(1 / 4)} 0;
-    font-size: ${scale(-1 / 2).fontSize};
-  }
   &:hover {
     transform: scale(1.03, 1.03);
   }
+`
+
+const titleStyle = css`
+  color: var(--fg-title);
+  margin: 0 0 ${rhythm(1 / 8)} 0;
+  font-weight: bold;
+  line-height: 1;
+`
+
+const dateStyle = css`
+  margin: 0;
+  font-size: ${scale(-1 / 2).fontSize};
 `
 
 export const ScrapItem: React.FC<ScrapItemType> = ({ fields, frontmatter }) => {
@@ -40,10 +44,10 @@ export const ScrapItem: React.FC<ScrapItemType> = ({ fields, frontmatter }) => {
   return (
     <article css={scrapStyle}>
       <Link to={fields.slug} aria-label="記事へのリンク">
-        <h3>{title}</h3>
-        <p>
+        <div css={titleStyle}>{title}</div>
+        <div css={dateStyle}>
           <ArticleDate published={frontmatter.published} />
-        </p>
+        </div>
       </Link>
     </article>
   )

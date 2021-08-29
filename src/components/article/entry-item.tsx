@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import { css } from "@emotion/react"
 
 import { Mdx } from "../../types/mdx"
-import { rhythm } from "../../utils/typography"
+import { scale, rhythm } from "../../utils/typography"
 import { ArticleDate } from "./article-date"
 import Tags from "../tags"
 
@@ -13,6 +13,9 @@ export type EntryItemType = Pick<
 >
 
 const titleStyle = css`
+  font-size: ${scale(3 / 8).fontSize};
+  font-weight: bold;
+  line-height: 1;
   a {
     color: var(--fg-title);
     text-decoration: none;
@@ -36,11 +39,9 @@ export const EntryItem: React.FC<EntryItemType> = ({ fields, frontmatter }) => {
   return (
     <article>
       <div css={titleStyle}>
-        <h3>
-          <Link to={fields.slug} aria-label="記事へのリンク">
-            {title}
-          </Link>
-        </h3>
+        <Link to={fields.slug} aria-label="記事へのリンク">
+          {title}
+        </Link>
       </div>
       <div css={subTitleStyle}>
         <div>

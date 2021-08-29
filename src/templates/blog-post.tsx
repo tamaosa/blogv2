@@ -10,7 +10,7 @@ import { Mdx } from "../types/mdx"
 import { SiteMetadata } from "../types/site-metadata"
 import { ArticleDate } from "../components/article/article-date"
 import Tags from "../components/tags"
-import { rhythm } from "../utils/typography"
+import { scale, rhythm } from "../utils/typography"
 import { EntryItem, EntryItemType } from "../components/article/entry-item"
 
 type Props = {
@@ -47,10 +47,10 @@ const footerStyle = css`
 `
 
 const relatedStyle = css`
-  h2 {
-    color: var(--fg);
-    text-align: center;
-  }
+  text-align: center;
+  font-weight: bold;
+  font-size: ${scale(1 / 4).fontSize};
+  margin-bottom: ${rhythm(1 / 4)};
 `
 
 const prevNextStyle = css`
@@ -106,8 +106,10 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
       <nav>
         <Ad path={post.fields.slug} />
         {posts.length > 0 && (
-          <div css={relatedStyle}>
-            <h2>関連記事</h2>
+          <div>
+            <div css={relatedStyle}>
+              <span>関連記事</span>
+            </div>
             <ol style={{ listStyle: `none` }}>
               {posts.map(post => {
                 return (

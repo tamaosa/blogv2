@@ -1,0 +1,101 @@
+---
+title: Python
+published: 2021-09-03
+---
+
+Python 関連のめも
+
+## 目次
+
+- [開発環境を整える](#開発環境を整える)
+- [参考](#参考)
+
+## 開発環境を整える
+
+Python でなんらかのプロジェクトをはじめるうえで共通して使えそうなパッケージとかをまとめる（2021/09/02 現在）。選択肢ありすぎてよくわからんというのが調べた感想。
+
+### Python バージョン、パッケージ（ついでにパッケージング）の管理
+
+#### [Poetry](https://github.com/python-poetry/poetry)
+
+最近来てる？パッケージ管理ツール。パッケージ管理と仮想環境の構築が簡単にできるので入れた方がよさそう。他の選択肢としては[Pipenv](https://github.com/pypa/pipenv)などがあるが、Poetry はさらにパッケージングまで行うことができるらしい。これらの情報はすべて`pyproject.toml`に記述されている。
+
+以下で`.venv`をプロジェクト配下に作成されるようにすると便利
+
+```bash
+poetry config virtualenvs.in-project true
+```
+
+また、Poetry で仮想環境を管理したくない場合は以下のようにして無効化できる。コンテナを使っているときとかあるいは[embeddable package](https://www.tamaosa.com/2021/python-on-usb/)使っているときなどに便利そう。
+
+```bash
+poetry config virtualenvs.create false
+```
+
+- [入門 - Poetry documentation](https://cocoatomo.github.io/poetry-ja/)
+- [2020 年の Python パッケージ管理ベストプラクティス](https://qiita.com/sk217/items/43c994640f4843a18dbe)
+- [pip と pipenv と poetry の技術的・歴史的背景とその展望](https://vaaaaaanquish.hatenablog.com/entry/2021/03/29/221715)
+
+#### [pyenv](https://github.com/pyenv/pyenv)
+
+任意のバージョンの Python をインストールできる。任意のバージョンが必要なときに便利。
+
+Poetry と併用して以下のように使える。
+
+```bash
+pyenv install 2.7.15
+pyenv local 2.7.15  # Activate Python 2.7 for the current project
+poetry install
+```
+
+- [環境管理 - Poetry documentation](https://cocoatomo.github.io/poetry-ja/managing-environments/)
+
+### テスト関連
+
+#### [pytest](https://docs.pytest.org/en/6.2.x/)
+
+Python のユニットテストライブラリでいまのところデファクトスタンダードらしい。ほかにも[unittest](https://docs.python.org/ja/3/library/unittest.html)や[nose](https://nose.readthedocs.io/en/latest/)などもあるが pytest の方が使い勝手がいいらしい。
+
+- [pytest ヘビー 🐍 ユーザーへの第一歩](https://www.m3tech.blog/entry/pytest-summary)
+- [pytest - ゼロから学ぶ Python](https://rinatz.github.io/python-book/ch08-02-pytest/)
+
+#### [tox](https://tox.readthedocs.io/en/latest/)
+
+複数の Python バージョンでテストを実行するのに使われる。
+
+### スタイル関連
+
+#### [flake8](https://flake8.pycqa.org/en/latest/)
+
+りんたー。最近一番使われている？他にも[pylint](https://www.pylint.org/)などが選択肢になる。flake8 は
+
+1. pep8(pycodestyle)：PEP8 に準拠しているか
+2. pyflakes：論理エラー
+3. mccabe：複雑度
+
+の計 3 つのラッパーらしいのでいろいろな観点を見てくれる。
+
+- [VSCode の Python 開発環境で pylint の代わりに flake8 を導入し自動整形を設定する](https://qiita.com/psychoroid/items/2c2acc06c900d2c0c8cb)
+
+#### [black](https://black.readthedocs.io/en/stable/index.html)
+
+フォーマッター。最近一番使われている？他にも[autopep8](https://github.com/hhatto/autopep8)などが選択肢になる。
+
+個別のルール設定があまりできないらしい。ただ、個人的にはルール設定の自由度が高い個人の好みがでるだけなので、とくにマイナスにはならないと思ってる。
+
+#### [mypy](http://www.mypy-lang.org/)
+
+型チェックしてくれる。Python は 3.5 から型ヒントが導入されたけど、あくまでヒントであって型チェックはされない。ということでこいつの出番。
+
+### ドキュメント作成
+
+#### [Sphinx](https://www.sphinx-doc.org/ja/master/)
+
+> 知的で美しいドキュメントを簡単に作れるようにするツール
+
+Python パッケージのドキュメントがよく同じようなフォーマットをしている正体。Docstring からドキュメントを自動生成してくれるのが非常に便利。
+
+- [Sphinx クックブック](https://sphinx-users.jp/cookbook/index.html)
+- [Sphinx の使い方．docstring を読み込んで仕様書を生成](https://qiita.com/futakuchi0117/items/4d3997c1ca1323259844#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%BA%96%E5%82%99)
+
+## 参考

@@ -1,10 +1,10 @@
 export const contentWidth = 32
 
 export const lightTheme = {
-  backGround: "#eef2f5",
-  textNormal: "#303031",
-  textTitle: "#335363",
-  textLink: "#634333",
+  backGround: "#ffffff",
+  textNormal: "#282829",
+  textTitle: "#47758c",
+  textLink: "#8e604a",
 
   // Prism theme with custom prism.js default theme
   // Based on dabblet (http://dabblet.com)

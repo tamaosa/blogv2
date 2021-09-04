@@ -190,6 +190,7 @@ module.exports = {
         trackingId: process.env.GATSBY_GOOGLE_ANALYTICS_ID,
       },
     },
-    `gatsby-plugin-webpack-bundle-analyser-v2`
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
+    `gatsby-plugin-preact`,
   ],
 }

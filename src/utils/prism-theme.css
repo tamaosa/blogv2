@@ -1,6 +1,8 @@
-/* The MIT License (MIT)
+/* 
+The MIT License (MIT)
 
 Copyright (c) 2015 PrismJS
+Copyright (c) 2021 Tamaosa
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18,24 +20,16 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE. */
-
-/**
- * Nord Theme Originally by Arctic Ice Studio
- * https://nordtheme.com
- *
- * Ported for PrismJS by Zane Hitchcoxc (@zwhitchcox) and Gabriel Ramos (@gabrieluizramos)
- *
- * Change font-family by @tamaosa
- * Change margin by @tamaosa
- */
+SOFTWARE. 
+*/
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #f8f8f2;
+  color: var(--prism-fg);
   background: none;
-  font-family: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo",
-    monospace;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+    Liberation Mono, monospace;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -61,7 +55,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #2e3440;
+  background: var(--prism-bg);
 }
 
 /* Inline code */
@@ -75,11 +69,11 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #636f88;
+  color: var(--prism-fg-token1);
 }
 
 .token.punctuation {
-  color: #81a1c1;
+  color: var(--prism-fg);
 }
 
 .namespace {
@@ -91,15 +85,12 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #81a1c1;
+  color: var(--prism-fg-token2);
 }
 
+.token.boolean,
 .token.number {
-  color: #b48ead;
-}
-
-.token.boolean {
-  color: #81a1c1;
+  color: var(--prism-fg-token3);
 }
 
 .token.selector,
@@ -108,7 +99,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #a3be8c;
+  color: var(--prism-fg-token4);
 }
 
 .token.operator,
@@ -117,23 +108,23 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-  color: #81a1c1;
+  color: var(--prism-fg);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.function,
 .token.class-name {
-  color: #88c0d0;
+  color: var(--prism-fg-token5);
 }
 
 .token.keyword {
-  color: #81a1c1;
+  color: var(--prism-fg-token6);
 }
 
 .token.regex,
 .token.important {
-  color: #ebcb8b;
+  color: var(--prism-fg-token7);
 }
 
 .token.important,

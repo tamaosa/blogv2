@@ -17,6 +17,15 @@ const GlobalStyle: React.FC = () => (
         --fg: ${lightTheme.textNormal};
         --fg-title: ${lightTheme.textTitle};
         --fg-link: ${lightTheme.textLink};
+        --prism-fg: ${lightTheme.prismText};
+        --prism-bg: ${lightTheme.prismBackGround};
+        --prism-fg-token1: ${lightTheme.prismTextToken1};
+        --prism-fg-token2: ${lightTheme.prismTextToken2};
+        --prism-fg-token3: ${lightTheme.prismTextToken3};
+        --prism-fg-token4: ${lightTheme.prismTextToken4};
+        --prism-fg-token5: ${lightTheme.prismTextToken5};
+        --prism-fg-token6: ${lightTheme.prismTextToken6};
+        --prism-fg-token7: ${lightTheme.prismTextToken7};
       }
 
       body.dark-mode {
@@ -24,6 +33,15 @@ const GlobalStyle: React.FC = () => (
         --fg: ${darkTheme.textNormal};
         --fg-title: ${darkTheme.textTitle};
         --fg-link: ${darkTheme.textLink};
+        --prism-fg: ${darkTheme.prismText};
+        --prism-bg: ${darkTheme.prismBackGround};
+        --prism-fg-token1: ${darkTheme.prismTextToken1};
+        --prism-fg-token2: ${darkTheme.prismTextToken2};
+        --prism-fg-token3: ${darkTheme.prismTextToken3};
+        --prism-fg-token4: ${darkTheme.prismTextToken4};
+        --prism-fg-token5: ${darkTheme.prismTextToken5};
+        --prism-fg-token6: ${darkTheme.prismTextToken6};
+        --prism-fg-token7: ${darkTheme.prismTextToken7};
       }
 
       h1,
@@ -50,7 +68,7 @@ const GlobalStyle: React.FC = () => (
       }
 
       hr {
-        background: hsla(0,0%,0%,0.2);
+        background: hsla(0, 0%, 0%, 0.2);
         border: none;
         height: 1.5px;
       }

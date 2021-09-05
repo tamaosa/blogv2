@@ -112,7 +112,6 @@ module.exports = {
                   date: node.frontmatter.published,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
                 })
               })
             },
@@ -124,7 +123,6 @@ module.exports = {
                 ) {
                   nodes {
                     excerpt(truncate: true)
-                    html
                     fields {
                       slug
                     }
@@ -190,6 +188,7 @@ module.exports = {
         trackingId: process.env.GATSBY_GOOGLE_ANALYTICS_ID,
       },
     },
-    `gatsby-plugin-webpack-bundle-analyser-v2`
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
+    `gatsby-plugin-preact`,
   ],
 }

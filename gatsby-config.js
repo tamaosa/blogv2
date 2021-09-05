@@ -112,7 +112,6 @@ module.exports = {
                   date: node.frontmatter.published,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
                 })
               })
             },
@@ -124,7 +123,6 @@ module.exports = {
                 ) {
                   nodes {
                     excerpt(truncate: true)
-                    html
                     fields {
                       slug
                     }

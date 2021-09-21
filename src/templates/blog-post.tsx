@@ -29,7 +29,7 @@ type Props = {
 
 const headerStyel = css`
   margin-bottom: ${rhythm(1)};
-  p {
+  div {
     text-align: right;
   }
 `
@@ -80,12 +80,12 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
         <header css={headerStyel}>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <Tags tags={post.frontmatter?.tags} />
-          <p>
+          <div>
             <ArticleDate
               published={post.frontmatter.published}
               updated={post.frontmatter?.updated}
             />
-          </p>
+          </div>
         </header>
         <main css={mainStyle}>
           <MDXRenderer>{post.body}</MDXRenderer>
@@ -100,7 +100,6 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
               （GitHubで編集を提案）
             </a>
           </small>
-          <hr />
         </footer>
       </article>
       <nav>

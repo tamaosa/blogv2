@@ -18,23 +18,22 @@ const avatorStyle = css`
 
 const authorStyle = css`
   margin: 0;
-  & > a {
-    display: inline-block;
+  a {
     color: var(--fg);
-    width: ${rhythm(3 / 4)};
-    margin-left: ${rhythm(1 / 4)};
+    font-weight: bold;
+    text-decoration: none;
   }
-  & > p {
+  div {
     margin: 0;
     font-size: ${scale(-1 / 8).fontSize};
     line-height: ${scale(-1 / 8).lineHeight};
   }
+`
 
-  & > span > a {
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--fg);
-  }
+const iconsStyle = css`
+  display: inline-block;
+  width: ${rhythm(3 / 4)};
+  margin-left: ${rhythm(1 / 4)};
 `
 
 const Bio: React.FC = () => {
@@ -80,16 +79,16 @@ const Bio: React.FC = () => {
         />
       </div>
       <div css={authorStyle}>
-        <span>
-          <Link to="/about">{author.name}</Link>
-        </span>
+        <Link to="/about">{author.name}</Link>
         <a
           href={`https://github.com/${social.github}`}
           target="_blank"
           rel="external noopener"
           aria-label={`GitHubアカウント`}
         >
-          <FontAwesomeIcon icon={["fab", "github"]} />
+          <span css={iconsStyle}>
+            <FontAwesomeIcon icon={["fab", "github"]} />
+          </span>
         </a>
         <a
           href={`https://twitter.com/${social.twitter}`}
@@ -97,9 +96,11 @@ const Bio: React.FC = () => {
           rel="external noopener"
           aria-label={`Twitterアカウント`}
         >
-          <FontAwesomeIcon icon={["fab", "twitter"]} />
+          <span css={iconsStyle}>
+            <FontAwesomeIcon icon={["fab", "twitter"]} />
+          </span>
         </a>
-        <p>{author.summary}</p>
+        <div>{author.summary}</div>
       </div>
     </div>
   )

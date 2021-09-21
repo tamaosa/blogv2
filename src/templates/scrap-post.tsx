@@ -17,7 +17,7 @@ type Props = {
 
 const headerStyel = css`
   margin-bottom: ${rhythm(1)};
-  p {
+  div {
     text-align: right;
   }
 `
@@ -45,16 +45,14 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
       <article itemScope itemType="http://schema.org/Article">
         <header css={headerStyel}>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>
+          <div>
             <ArticleDate published={post.frontmatter.published} />
-          </p>
+          </div>
         </header>
         <main css={mainStyle}>
           <MDXRenderer>{post.body}</MDXRenderer>
         </main>
-        <footer css={footerStyle}>
-          <hr />
-        </footer>
+        <footer css={footerStyle}></footer>
       </article>
       <nav>
         <small>

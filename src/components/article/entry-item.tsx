@@ -27,11 +27,6 @@ const subTitleStyle = css`
   flex-flow: row wrap;
   align-items: center;
   margin: ${rhythm(1 / 4)} 0 ${rhythm(1 / 4)} ${rhythm(1 / 2)};
-
-  p {
-    margin: 0 ${rhythm(1 / 4)} 0 0;
-    padding: 0;
-  }
 `
 
 export const EntryItem: React.FC<EntryItemType> = ({ fields, frontmatter }) => {
@@ -45,12 +40,10 @@ export const EntryItem: React.FC<EntryItemType> = ({ fields, frontmatter }) => {
       </div>
       <div css={subTitleStyle}>
         <div>
-          <p>
-            <ArticleDate
-              published={frontmatter.published}
-              updated={frontmatter?.updated}
-            />
-          </p>
+          <ArticleDate
+            published={frontmatter.published}
+            updated={frontmatter?.updated}
+          />
         </div>
         <div>
           <Tags tags={frontmatter?.tags} />

@@ -26,7 +26,8 @@ const subTitleStyle = css`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  margin: ${rhythm(1 / 4)} 0 ${rhythm(1 / 4)} ${rhythm(1 / 2)};
+  font-size: ${scale(-1 / 4).fontSize};
+  margin: ${rhythm(1 / 4)} 0 ${rhythm(1 / 2)} 0;
 `
 
 export const EntryItem: React.FC<EntryItemType> = ({ fields, frontmatter }) => {

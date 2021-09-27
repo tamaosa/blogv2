@@ -31,6 +31,7 @@ const headerStyel = css`
   margin-bottom: ${rhythm(1)};
   div {
     text-align: right;
+    margin-top: ${rhythm(1 / 2)};
   }
 `
 

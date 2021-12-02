@@ -1,20 +1,13 @@
 ---
-title: Gatsby
-published: 2021-08-26
+title: ディレクトリ毎に allMarkdownRemark(allMdx)をフィルタリング
+published: 2021-08-31
+tags:
+  - Gatsby
 ---
-
-Gatsby 関連のめも
-
-## 目次
-
-- [ディレクトリ毎に allMarkdownRemark(allMdx)をフィルタリング](#ディレクトリ毎に-allMarkdownRemarkallMdxをフィルタリング)
-- [参考](#参考)
-
-## ディレクトリ毎に allMarkdownRemark(allMdx)をフィルタリング
 
 別のディレクトリに分けておいた md や mdx を各ディレクトリ毎に取得したいことがあった。ただ、[gatsby-transformer-remark](https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/)や[gatsby-plugin-mdx](https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/)で使えるようになる`allMarkdownRemark`や`allMdx`を使うと、基本的に[gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/)で FileNode に追加したすべての md(mdx)を取得してしまう。
 
-### fileAbsolutePath を使う
+## fileAbsolutePath を使う
 
 手っ取り早いのは正規表現を使って`fileAbsolutePath`をフィルタリングする方法。
 
@@ -28,7 +21,7 @@ allMdx(filter: {fileAbsolutePath: {regex: "/dir1/"}}) {
 
 基本的にはこの方法で問題なさそう。
 
-### sourceInstanceName を使う
+## sourceInstanceName を使う
 
 正規表現を使う方法でまあ十分だけどもう少しスマートな方法がないかと調べていると[いい感じ](https://github.com/gatsbyjs/gatsby/issues/1634#issuecomment-388899348)の方法が紹介されてた。
 
@@ -60,7 +53,6 @@ allMdx(filter: {fields: {sourceInstanceName: {eq: "dir1"}}}) {
 }
 ```
 
-こちらの方が正規表現を利用するよりも安定しそうです。やったね。
 
 ## 参考
 

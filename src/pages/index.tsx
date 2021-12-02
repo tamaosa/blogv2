@@ -30,14 +30,6 @@ const BlogIndex: React.FC<Props> = ({ data }) => {
           )
         })}
       </ol>
-      <small
-        css={css`
-          margin: 0;
-          float: right;
-        `}
-      >
-        <Link to="/scrap">scrap→</Link>
-      </small>
     </Layout>
   )
 }

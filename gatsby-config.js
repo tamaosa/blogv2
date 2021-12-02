@@ -31,13 +31,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `scraps`,
-        path: `${__dirname}/content/scraps`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
@@ -172,7 +165,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        excludes: [`/tags/*`, `/scrap`, `/scraps/*`],
+        excludes: [`/tags/*`],
       },
     },
     {

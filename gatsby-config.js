@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `tamaosa.com`,
+    title: `blog.tamaosa.com`,
     author: {
       name: `tamaosa`,
       summary: `釣りと登山が好き。`,
     },
     description: `tamaosa's blog!`,
-    siteUrl: `https://www.tamaosa.com`,
+    siteUrl: `https://blog.tamaosa.com`,
     social: {
       twitter: `_tamaosa`,
       github: `tamaosa`
@@ -135,7 +135,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `tamaosa.com`,
+        name: `blog.tamaosa.com`,
         short_name: `tamaosa`,
         start_url: `/`,
         background_color: `#ffffff`,

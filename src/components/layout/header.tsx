@@ -18,6 +18,7 @@ const titleStyle = css`
     font-weight: bold;
     font-size: ${scale(1 / 2).fontSize};
     line-height: ${scale(1 / 2).lineHeight};
+    letter-spacing: 0;
   }
 `
 

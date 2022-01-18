@@ -15,10 +15,10 @@ const titleStyle = css`
   a {
     color: var(--fg);
     text-decoration: none;
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
     font-weight: bold;
-    font-size: ${scale(1 / 2).fontSize};
-    line-height: ${scale(1 / 2).lineHeight};
-    letter-spacing: 0;
+    font-size: ${scale(1 / 4).fontSize};
+    line-height: ${scale(1 / 4).lineHeight};
   }
 `
 

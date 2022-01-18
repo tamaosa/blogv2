@@ -39,7 +39,13 @@ const Footer: React.FC = () => (
         >
           Gatsby
         </a>
-        , © 2019 Tamaosa
+        , © 2019
+        {` `}
+        <a
+          href="https://www.tamaosa.com"
+        >
+          tamaosa
+        </a>
       </small>
     </div>
   </footer>

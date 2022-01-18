@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { css } from "@emotion/react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -18,10 +18,11 @@ const avatorStyle = css`
 
 const authorStyle = css`
   margin: 0;
+  span {
+    font-weight: bold;
+  }
   a {
     color: var(--fg);
-    font-weight: bold;
-    text-decoration: none;
   }
   div {
     margin: 0;
@@ -79,7 +80,7 @@ const Bio: React.FC = () => {
         />
       </div>
       <div css={authorStyle}>
-        <Link to="/about">{author.name}</Link>
+        <span>{author.name}</span>
         <a
           href={`https://github.com/${social.github}`}
           target="_blank"

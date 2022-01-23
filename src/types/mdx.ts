@@ -14,4 +14,3 @@ export type Mdx<Keys extends keyof Frontmatter> = {
     slug: string
   }
 }
-

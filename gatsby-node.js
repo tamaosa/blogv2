@@ -14,7 +14,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       {
         blogs: allMdx(
           sort: { fields: [frontmatter___published], order: DESC }
-          filter: {fields: {collection: {eq: "entries"}}}
+          filter: { fields: { collection: { eq: "entries" } } }
         ) {
           nodes {
             id
@@ -26,7 +26,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
           }
         }
-        tags: allMdx(filter: {fields: {collection: {eq: "entries"}}}) {
+        tags: allMdx(filter: { fields: { collection: { eq: "entries" } } }) {
           group(field: frontmatter___tags) {
             fieldValue
             totalCount
@@ -54,7 +54,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (posts.length > 0) {
     posts.forEach((post, index) => {
       const nextPostId = index === 0 ? null : posts[index - 1].id
-      const previousPostId = index === posts.length - 1 ? null : posts[index + 1].id
+      const previousPostId =
+        index === posts.length - 1 ? null : posts[index + 1].id
 
       createPage({
         path: post.fields.slug,
@@ -70,7 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   if (tags.length > 0) {
-    tags.forEach((tag) => {
+    tags.forEach(tag => {
       createPage({
         path: `/tags/${tag.fieldValue}/`,
         component: tagPost,
@@ -81,7 +82,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
-
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

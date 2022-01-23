@@ -9,9 +9,9 @@ module.exports = {
     siteUrl: `https://blog.tamaosa.com`,
     social: {
       twitter: `_tamaosa`,
-      github: `tamaosa`
+      github: `tamaosa`,
     },
-    repository: `https://github.com/tamaosa/blogv2`
+    repository: `https://github.com/tamaosa/blogv2`,
   },
   plugins: [
     `gatsby-plugin-emotion`,
@@ -71,12 +71,9 @@ module.exports = {
               strict: `ignore`,
             },
           },
-          'gatsby-remark-numbered-footnotes',
+          "gatsby-remark-numbered-footnotes",
         ],
-        remarkPlugins: [
-          require('remark-math'),
-          require('remark-html-katex'),
-        ],
+        remarkPlugins: [require("remark-math"), require("remark-html-katex")],
       },
     },
     `gatsby-transformer-sharp`,
@@ -157,10 +154,13 @@ module.exports = {
     },
     `gatsby-plugin-use-dark-mode`,
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        policy: [{ userAgent: 'Googlebot-Image', disallow: '/' }, { userAgent: '*', allow: '/' }]
-      }
+        policy: [
+          { userAgent: "Googlebot-Image", disallow: "/" },
+          { userAgent: "*", allow: "/" },
+        ],
+      },
     },
     {
       resolve: `gatsby-plugin-sitemap`,

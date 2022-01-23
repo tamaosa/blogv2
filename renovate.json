@@ -1,12 +1,8 @@
 {
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:base"],
   "timezone": "Asia/Tokyo",
   "schedule": "every weekend",
-  "labels": [
-    "dependencies"
-  ],
+  "labels": ["dependencies"],
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
@@ -20,9 +16,7 @@
     }
   ],
   "vulnerabilityAlerts": {
-    "labels": [
-      "security"
-    ]
+    "labels": ["security"]
   },
   "lockFileMaintenance": {
     "enabled": true,

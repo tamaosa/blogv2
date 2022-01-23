@@ -41,11 +41,7 @@ const Footer: React.FC = () => (
         </a>
         , © 2019
         {` `}
-        <a
-          href="https://www.tamaosa.com"
-        >
-          tamaosa
-        </a>
+        <a href="https://www.tamaosa.com">tamaosa</a>
       </small>
     </div>
   </footer>

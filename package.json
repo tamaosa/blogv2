@@ -68,6 +68,8 @@
     "husky": "^7.0.0",
     "lint-staged": "^12.2.2",
     "prettier": "2.5.1",
+    "textlint": "^12.1.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0",
     "typescript": "4.5.5"
   },
   "homepage": "https://github.com/tamaosa/blogv2#readme",
@@ -84,6 +86,7 @@
     "build": "yarn run clean && gatsby build",
     "develop": "yarn run clean && gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx}\"",
+    "lint": "textlint \"**/*.{md,mdx}\"",
     "lint-staged": "lint-staged",
     "start": "yarn run develop",
     "serve": "gatsby serve",
@@ -94,6 +97,9 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,md,mdx}": [
       "prettier --write"
+    ],
+    "*.{md,mdx}": [
+      "textlint"
     ]
   }
 }

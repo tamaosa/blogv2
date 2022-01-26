@@ -1,4 +1,4 @@
-export const contentWidth = 32
+export const contentWidth = 31
 
 export const lightTheme = {
   backGround: "#ffffff",

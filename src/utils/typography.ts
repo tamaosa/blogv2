@@ -3,7 +3,7 @@ import "@fontsource/kosugi-maru"
 
 const theme = {
   baseFontSize: "16px",
-  baseLineHeight: 1.75,
+  baseLineHeight: 1.5,
   scaleRatio: 2,
   headerFontFamily: ["Kosugi Maru", "sans-serif"],
   bodyFontFamily: ["Kosugi Maru", "sans-serif"],

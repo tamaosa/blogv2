@@ -1,0 +1,42 @@
+---
+title: Cloudflare PagesでPythonのバージョンを指定する
+published: 2022-01-27
+tags:
+  - Cloudflare
+  - Python
+---
+
+Cloudflare Pages で[サポートされている言語](https://developers.cloudflare.com/pages/platform/build-configuration#language-support-and-tools)の 1 つに Python がありますが、デフォルトバージョンは v2.7 とちょっと古いです。そのため、たとえば v3 が必要な場合には Python バージョンを指定してやらないといけないです。
+
+## バージョンを指定する
+
+Python の場合バージョンの指定は環境変数`PYTHON_VERSION`で指定するか、あるいは`runtime.txt`または`Pipfile`で行えます。たとえば環境変数で指定するなら以下のようになります。
+
+| 変数名         | 値  |
+| -------------- | --- |
+| PYTHON_VERSION | 3.7 |
+
+## 最新のバージョンは…？
+
+じゃあ現在指定可能な最新バージョンはというと、どうやら**v3.7**のようです[^version]。Sphinx のデプロイ方法について書かれた[ドキュメント](https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site#prerequisites)に以下のように記述されていました。
+
+> Python 3.7 is the latest version supported by Cloudflare Pages.
+
+試しに`PYTHON_VERSION`で 3.8 を指定してみた際は以下のようなエラーがでてインストールできませんでした。
+
+```shell
+01:43:15.322	Installing dependencies
+01:43:15.322	/opt/build/bin/run-build-functions.sh: line 168: /opt/buildhome/python3.8/bin/activate: No such file or directory
+01:43:15.322	Error setting python version from the PYTHON_VERSION environment variable
+01:43:15.322	Please see https://github.com/netlify/build-image/#included-software for current versions
+01:43:15.323	Failed: build command exited with code: 1
+```
+
+## netlify/build-image
+
+上記のログ[^included_software]を眺めていて気がついたのですが、Cloudflare Pages のビルド環境は[netlify/build-image](https://github.com/netlify/build-image/)（Ubuntu 16.04.6 LTS だったのでたぶん Xenial image）がベースになっているようです。
+
+netlify/build-image は名前の通り Netlify で使われているビルドイメージです。Cloudflare Pages はドキュメントがまだ整備されきっていない部分もあるので、 Python に限らずビルド関連で詰まったら Netlify の情報を参考にしてみてもが良いかもしれません。
+
+[^version]: [Build configuration](https://developers.cloudflare.com/pages/platform/build-configuration)にとくに記載がなかったため最初は`PYTHON_VERSION`を 3.9→3.8→3.7 と試していました…
+[^included_software]: ちなみに出力さた url はリンクが切れているので（Xenial image なのだとすれば）<https://github.com/netlify/build-image/blob/xenial/included_software.md>を参照するとよさそう

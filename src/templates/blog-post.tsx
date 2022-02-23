@@ -1,17 +1,10 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import { css } from "@emotion/react"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Ad from "../components/ad"
-import { ArticleDate } from "../components/article-date"
-import Tags from "../components/tags"
-import { ArticleList } from "../components/article-list"
+import Article from "../components/article"
 import { Mdx } from "../types/mdx"
-import { SiteMetadata } from "../types/site-metadata"
-import { scale, rhythm } from "../utils/typography"
 
 type Props = {
   data: {
@@ -21,117 +14,23 @@ type Props = {
     allMdx: {
       nodes: Array<Mdx<"title" | "published" | "updated" | "tags">>
     }
-    site: {
-      siteMetadata: Pick<SiteMetadata, "repository">
-    }
   }
 }
-
-const headerStyel = css`
-  margin-bottom: ${rhythm(1)};
-  div {
-    text-align: right;
-    margin-top: ${rhythm(1 / 2)};
-  }
-`
-
-const mainStyle = css`
-  margin-bottom: ${rhythm(1)};
-`
-
-const footerStyle = css`
-  text-align: right;
-  margin-bottom: ${rhythm(1)};
-  hr {
-    margin-top: ${rhythm(1)};
-  }
-`
-
-const relatedStyle = css`
-  text-align: center;
-  font-weight: bold;
-  font-size: ${scale(1 / 4).fontSize};
-  margin-bottom: ${rhythm(1 / 4)};
-`
-
-const prevNextStyle = css`
-  ul {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  li:nth-of-type(2n) {
-    margin-left: auto;
-  }
-`
 
 const BlogPostTemplate: React.FC<Props> = ({ data }) => {
   const post = data.mdx
   const posts = data.allMdx.nodes
   const { previous, next } = data
-  const { repository } = data.site.siteMetadata
 
   return (
     <Layout>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
-      <article itemScope itemType="http://schema.org/Article">
-        <header css={headerStyel}>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <Tags tags={post.frontmatter?.tags} />
-          <div>
-            <ArticleDate
-              published={post.frontmatter.published}
-              updated={post.frontmatter?.updated}
-            />
-          </div>
-        </header>
-        <main css={mainStyle}>
-          <MDXRenderer>{post.body}</MDXRenderer>
-        </main>
-        <footer css={footerStyle}>
-          <small>
-            <a
-              target="_blank"
-              href={`${repository}/tree/master/content/entries${post.fields.slug}index.mdx`}
-              rel="external noopener"
-            >
-              （GitHubで編集を提案）
-            </a>
-          </small>
-        </footer>
-      </article>
-      <nav>
-        <Ad path={post.fields.slug} />
-        {posts.length > 0 && (
-          <div>
-            <div css={relatedStyle}>
-              <span>関連記事</span>
-            </div>
-            <ArticleList posts={posts} />
-          </div>
-        )}
-        <div css={prevNextStyle}>
-          <ul>
-            <li>
-              {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
-                </Link>
-              )}
-            </li>
-            <li>
-              {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
-                </Link>
-              )}
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Article
+        post={post}
+        relatedPosts={posts}
+        prevPost={previous}
+        nextPost={next}
+      />
     </Layout>
   )
 }
@@ -186,11 +85,6 @@ export const pageQuery = graphql`
     ) {
       nodes {
         ...ArticleLink
-      }
-    }
-    site {
-      siteMetadata {
-        repository
       }
     }
   }

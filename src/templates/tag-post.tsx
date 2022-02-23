@@ -3,12 +3,12 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { EntryItem, EntryItemType } from "../components/article/entry-item"
+import { ArticleLink, ArticleLinkType } from "../components/article-link"
 
 type Props = {
   data: {
     allMdx: {
-      nodes: Array<EntryItemType>
+      nodes: Array<ArticleLinkType>
     }
   }
   pageContext: {
@@ -31,7 +31,7 @@ const TagPost: React.FC<Props> = ({ data, pageContext }) => {
         {posts.map(post => {
           return (
             <li key={post.fields.slug}>
-              <EntryItem {...post} />
+              <ArticleLink {...post} />
             </li>
           )
         })}

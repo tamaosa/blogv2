@@ -2,12 +2,12 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { css } from "@emotion/react"
 
-import { Mdx } from "../../types/mdx"
-import { scale, rhythm } from "../../utils/typography"
+import { Mdx } from "../types/mdx"
+import { scale, rhythm } from "../utils/typography"
 import { ArticleDate } from "./article-date"
-import Tags from "../tags"
+import Tags from "./tags"
 
-export type EntryItemType = Pick<
+export type ArticleLinkType = Pick<
   Mdx<"title" | "published" | "updated" | "tags">,
   "fields" | "frontmatter"
 >
@@ -30,7 +30,10 @@ const subTitleStyle = css`
   margin: ${rhythm(1 / 4)} 0 ${rhythm(1 / 2)} 0;
 `
 
-export const EntryItem: React.FC<EntryItemType> = ({ fields, frontmatter }) => {
+export const ArticleLink: React.FC<ArticleLinkType> = ({
+  fields,
+  frontmatter,
+}) => {
   const title = frontmatter.title || fields.slug
   return (
     <article>

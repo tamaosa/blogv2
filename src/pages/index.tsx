@@ -1,20 +1,19 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import { css } from "@emotion/react"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { EntryItem, EntryItemType } from "../components/article/entry-item"
+import { ArticleLink, ArticleLinkType } from "../components/article-link"
 
 type Props = {
   data: {
     allMdx: {
-      nodes: Array<EntryItemType>
+      nodes: Array<ArticleLinkType>
     }
   }
 }
 
-const BlogIndex: React.FC<Props> = ({ data }) => {
+const Home: React.FC<Props> = ({ data }) => {
   const posts = data.allMdx.nodes
 
   return (
@@ -25,7 +24,7 @@ const BlogIndex: React.FC<Props> = ({ data }) => {
         {posts.map(post => {
           return (
             <li key={post.fields.slug}>
-              <EntryItem {...post} />
+              <ArticleLink {...post} />
             </li>
           )
         })}
@@ -34,7 +33,7 @@ const BlogIndex: React.FC<Props> = ({ data }) => {
   )
 }
 
-export default BlogIndex
+export default Home
 
 export const pageQuery = graphql`
   query {

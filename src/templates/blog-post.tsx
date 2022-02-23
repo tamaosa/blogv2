@@ -8,10 +8,10 @@ import SEO from "../components/seo"
 import Ad from "../components/ad"
 import { Mdx } from "../types/mdx"
 import { SiteMetadata } from "../types/site-metadata"
-import { ArticleDate } from "../components/article/article-date"
+import { ArticleDate } from "../components/article-date"
 import Tags from "../components/tags"
 import { scale, rhythm } from "../utils/typography"
-import { EntryItem, EntryItemType } from "../components/article/entry-item"
+import { ArticleLink, ArticleLinkType } from "../components/article-link"
 
 type Props = {
   data: {
@@ -19,7 +19,7 @@ type Props = {
     previous: Mdx<"title">
     next: Mdx<"title">
     allMdx: {
-      nodes: Array<EntryItemType>
+      nodes: Array<ArticleLinkType>
     }
     site: {
       siteMetadata: Pick<SiteMetadata, "repository">
@@ -114,7 +114,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
               {posts.map(post => {
                 return (
                   <li key={post.fields.slug}>
-                    <EntryItem {...post} />
+                    <ArticleLink {...post} />
                   </li>
                 )
               })}

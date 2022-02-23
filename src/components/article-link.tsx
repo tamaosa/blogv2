@@ -2,15 +2,10 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { css } from "@emotion/react"
 
-import { Mdx } from "../types/mdx"
-import { scale, rhythm } from "../utils/typography"
 import { ArticleDate } from "./article-date"
 import Tags from "./tags"
-
-export type ArticleLinkType = Pick<
-  Mdx<"title" | "published" | "updated" | "tags">,
-  "fields" | "frontmatter"
->
+import { Mdx } from "../types/mdx"
+import { scale, rhythm } from "../utils/typography"
 
 const titleStyle = css`
   font-size: ${scale(3 / 8).fontSize};
@@ -30,10 +25,9 @@ const subTitleStyle = css`
   margin: ${rhythm(1 / 4)} 0 ${rhythm(1 / 2)} 0;
 `
 
-export const ArticleLink: React.FC<ArticleLinkType> = ({
-  fields,
-  frontmatter,
-}) => {
+export const ArticleLink: React.FC<
+  Mdx<"title" | "published" | "updated" | "tags">
+> = ({ fields, frontmatter }) => {
   const title = frontmatter.title || fields.slug
   return (
     <article>
@@ -58,7 +52,7 @@ export const ArticleLink: React.FC<ArticleLinkType> = ({
 }
 
 export const query = graphql`
-  fragment EntryItems on Mdx {
+  fragment ArticleLink on Mdx {
     fields {
       slug
     }

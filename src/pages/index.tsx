@@ -3,12 +3,13 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { ArticleLink, ArticleLinkType } from "../components/article-link"
+import { ArticleList } from "../components/article-list"
+import { Mdx } from "../types/mdx"
 
 type Props = {
   data: {
     allMdx: {
-      nodes: Array<ArticleLinkType>
+      nodes: Array<Mdx<"title" | "published" | "updated" | "tags">>
     }
   }
 }
@@ -20,15 +21,7 @@ const Home: React.FC<Props> = ({ data }) => {
     <Layout>
       <SEO title="All posts" />
       <h1>Home</h1>
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          return (
-            <li key={post.fields.slug}>
-              <ArticleLink {...post} />
-            </li>
-          )
-        })}
-      </ol>
+      <ArticleList posts={posts} />
     </Layout>
   )
 }
@@ -42,7 +35,7 @@ export const pageQuery = graphql`
       filter: { fields: { collection: { eq: "entries" } } }
     ) {
       nodes {
-        ...EntryItems
+        ...ArticleLink
       }
     }
   }

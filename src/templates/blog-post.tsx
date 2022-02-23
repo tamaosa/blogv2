@@ -6,12 +6,12 @@ import { css } from "@emotion/react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Ad from "../components/ad"
-import { Mdx } from "../types/mdx"
-import { SiteMetadata } from "../types/site-metadata"
 import { ArticleDate } from "../components/article-date"
 import Tags from "../components/tags"
+import { ArticleList } from "../components/article-list"
+import { Mdx } from "../types/mdx"
+import { SiteMetadata } from "../types/site-metadata"
 import { scale, rhythm } from "../utils/typography"
-import { ArticleLink, ArticleLinkType } from "../components/article-link"
 
 type Props = {
   data: {
@@ -19,7 +19,7 @@ type Props = {
     previous: Mdx<"title">
     next: Mdx<"title">
     allMdx: {
-      nodes: Array<ArticleLinkType>
+      nodes: Array<Mdx<"title" | "published" | "updated" | "tags">>
     }
     site: {
       siteMetadata: Pick<SiteMetadata, "repository">
@@ -110,15 +110,7 @@ const BlogPostTemplate: React.FC<Props> = ({ data }) => {
             <div css={relatedStyle}>
               <span>関連記事</span>
             </div>
-            <ol style={{ listStyle: `none` }}>
-              {posts.map(post => {
-                return (
-                  <li key={post.fields.slug}>
-                    <ArticleLink {...post} />
-                  </li>
-                )
-              })}
-            </ol>
+            <ArticleList posts={posts} />
           </div>
         )}
         <div css={prevNextStyle}>
@@ -193,7 +185,7 @@ export const pageQuery = graphql`
       limit: 5
     ) {
       nodes {
-        ...EntryItems
+        ...ArticleLink
       }
     }
     site {

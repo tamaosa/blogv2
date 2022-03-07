@@ -13,7 +13,13 @@ export const ArticleList: React.FC<Props> = ({ posts }) => {
       {posts.map(post => {
         return (
           <li key={post.fields.slug}>
-            <ArticleLink {...post} />
+            <ArticleLink
+              slug={post.fields.slug}
+              title={post.frontmatter.title}
+              published={post.frontmatter.published}
+              updated={post.frontmatter?.updated}
+              tags={post.frontmatter?.tags}
+            />
           </li>
         )
       })}

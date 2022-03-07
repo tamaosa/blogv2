@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bio snapshot test 1`] = `
+<DocumentFragment>
+  <div
+    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+  >
+    <div
+      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+    />
+    <div
+      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+    >
+      <span>
+        tamaosa
+      </span>
+      <a
+        aria-label="GitHubアカウント"
+        href="https://github.com/github"
+        rel="external noopener"
+        target="_blank"
+      >
+        <span
+          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+        >
+          <i
+            class="fa"
+          />
+        </span>
+      </a>
+      <a
+        aria-label="Twitterアカウント"
+        href="https://twitter.com/twitter"
+        rel="external noopener"
+        target="_blank"
+      >
+        <span
+          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+        >
+          <i
+            class="fa"
+          />
+        </span>
+      </a>
+      <div>
+        summary
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

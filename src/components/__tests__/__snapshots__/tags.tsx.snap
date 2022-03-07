@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleLink snapshot test1 1`] = `
+<DocumentFragment>
+  <div>
+    <ul
+      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ArticleLink snapshot test2 1`] = `
+<DocumentFragment>
+  <div>
+    <ul
+      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+    >
+      <li>
+        <a
+          href="/tags/tag1/"
+        >
+          #tag1
+        </a>
+      </li>
+      <li>
+        <a
+          href="/tags/tag2/"
+        >
+          #tag2
+        </a>
+      </li>
+      <li>
+        <a
+          href="/tags/tag3/"
+        >
+          #tag3
+        </a>
+      </li>
+      <li>
+        <a
+          href="/tags/tag4/"
+        >
+          #tag4
+        </a>
+      </li>
+      <li>
+        <a
+          href="/tags/tag5/"
+        >
+          #tag5
+        </a>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;

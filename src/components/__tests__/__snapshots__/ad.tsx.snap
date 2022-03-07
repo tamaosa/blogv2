@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ad snapshot test 1`] = `
+<DocumentFragment>
+  <ins
+    class="adsbygoogle"
+    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+    data-ad-format="auto"
+    data-full-width-responsive="true"
+  />
+</DocumentFragment>
+`;

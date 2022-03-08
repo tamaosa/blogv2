@@ -2,14 +2,53 @@
 
 exports[`Bio snapshot test 1`] = `
 <DocumentFragment>
-  <div
-    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row nowrap;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+
+.emotion-1 {
+  margin: 0 0.75rem 0 0;
+}
+
+.emotion-2 {
+  margin: 0;
+}
+
+.emotion-2 span {
+  font-weight: bold;
+}
+
+.emotion-2 a {
+  color: var(--fg);
+}
+
+.emotion-2 div {
+  margin: 0;
+  font-size: 0.917rem;
+  line-height: 1.5rem;
+}
+
+.emotion-3 {
+  display: inline-block;
+  width: 1.125rem;
+  margin-left: 0.375rem;
+}
+
+<div
+    class="emotion-0"
   >
     <div
-      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+      class="emotion-1"
     />
     <div
-      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+      class="emotion-2"
     >
       <span>
         tamaosa
@@ -21,7 +60,7 @@ exports[`Bio snapshot test 1`] = `
         target="_blank"
       >
         <span
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-3"
         >
           <i
             class="fa"
@@ -35,7 +74,7 @@ exports[`Bio snapshot test 1`] = `
         target="_blank"
       >
         <span
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-3"
         >
           <i
             class="fa"

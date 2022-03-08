@@ -2,12 +2,134 @@
 
 exports[`Article snapshot test 1`] = `
 <DocumentFragment>
-  <article
+  .emotion-0 {
+  margin-bottom: 1.5rem;
+}
+
+.emotion-0 div {
+  text-align: right;
+  margin-top: 0.75rem;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0;
+}
+
+.emotion-1 li {
+  margin: 0 0.375rem 0 0;
+}
+
+.emotion-1 a {
+  color: var(--fg);
+  border: solid 2px var(--fg);
+  border-radius: 10px;
+  padding: 0.1875rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-1 a:hover {
+  color: var(--bg);
+  background: var(--fg-title);
+  border: solid 2px var(--fg-title);
+}
+
+.emotion-2 {
+  display: inline-block;
+  margin-right: 0.375rem;
+}
+
+.emotion-4 {
+  margin-bottom: 1.5rem;
+}
+
+.emotion-4 div:last-child {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+.emotion-4 div:last-child a {
+  font-size: small;
+}
+
+.emotion-5 {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.emotion-6 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.18921rem;
+  margin-bottom: 0.375rem;
+}
+
+.emotion-7 {
+  font-size: 1.29684rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.emotion-7 a {
+  color: var(--fg-title);
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 0.8409rem;
+  margin: 0.375rem 0 0.75rem 0;
+}
+
+.emotion-12 ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.emotion-12 li:nth-of-type(2n) {
+  margin-left: auto;
+}
+
+<article
     itemscope=""
     itemtype="http://schema.org/Article"
   >
     <header
-      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+      class="emotion-0"
     >
       <h1
         itemprop="headline"
@@ -16,7 +138,7 @@ exports[`Article snapshot test 1`] = `
       </h1>
       <div>
         <ul
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-1"
         >
           <li>
             <a
@@ -57,7 +179,7 @@ exports[`Article snapshot test 1`] = `
       </div>
       <div>
         <span
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-2"
         >
           <time>
             2022年1月1日
@@ -65,7 +187,7 @@ exports[`Article snapshot test 1`] = `
            公開
         </span>
         <span
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-2"
         >
            
           <time>
@@ -76,7 +198,7 @@ exports[`Article snapshot test 1`] = `
       </div>
     </header>
     <main
-      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+      class="emotion-4"
     >
       <div>
         body
@@ -93,14 +215,13 @@ exports[`Article snapshot test 1`] = `
     </main>
     <footer>
       <ins
-        class="adsbygoogle"
-        css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+        class="adsbygoogle emotion-5"
         data-ad-format="auto"
         data-full-width-responsive="true"
       />
       <div>
         <div
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-6"
         >
           <span>
             関連記事
@@ -114,7 +235,7 @@ exports[`Article snapshot test 1`] = `
           >
             <article>
               <div
-                css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                class="emotion-7"
               >
                 <a
                   aria-label="記事へのリンク"
@@ -124,11 +245,11 @@ exports[`Article snapshot test 1`] = `
                 </a>
               </div>
               <div
-                css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                class="emotion-8"
               >
                 <div>
                   <span
-                    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                    class="emotion-2"
                   >
                     <time>
                       2022年1月1日
@@ -136,7 +257,7 @@ exports[`Article snapshot test 1`] = `
                      公開
                   </span>
                   <span
-                    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                    class="emotion-2"
                   >
                      
                     <time>
@@ -148,7 +269,7 @@ exports[`Article snapshot test 1`] = `
                 <div>
                   <div>
                     <ul
-                      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                      class="emotion-1"
                     >
                       <li>
                         <a
@@ -194,7 +315,7 @@ exports[`Article snapshot test 1`] = `
         </ol>
       </div>
       <div
-        css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+        class="emotion-12"
       >
         <ul>
           <li>

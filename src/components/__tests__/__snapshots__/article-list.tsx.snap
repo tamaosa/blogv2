@@ -10,7 +10,73 @@ exports[`ArticleList snapshot test1 1`] = `
 
 exports[`ArticleList snapshot test2 1`] = `
 <DocumentFragment>
-  <ol
+  .emotion-0 {
+  font-size: 1.29684rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.emotion-0 a {
+  color: var(--fg-title);
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 0.8409rem;
+  margin: 0.375rem 0 0.75rem 0;
+}
+
+.emotion-2 {
+  display: inline-block;
+  margin-right: 0.375rem;
+}
+
+.emotion-4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0;
+}
+
+.emotion-4 li {
+  margin: 0 0.375rem 0 0;
+}
+
+.emotion-4 a {
+  color: var(--fg);
+  border: solid 2px var(--fg);
+  border-radius: 10px;
+  padding: 0.1875rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-4 a:hover {
+  color: var(--bg);
+  background: var(--fg-title);
+  border: solid 2px var(--fg-title);
+}
+
+<ol
     style="list-style: none;"
   >
     <li
@@ -18,7 +84,7 @@ exports[`ArticleList snapshot test2 1`] = `
     >
       <article>
         <div
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-0"
         >
           <a
             aria-label="記事へのリンク"
@@ -28,11 +94,11 @@ exports[`ArticleList snapshot test2 1`] = `
           </a>
         </div>
         <div
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-1"
         >
           <div>
             <span
-              css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+              class="emotion-2"
             >
               <time>
                 2022年1月1日
@@ -40,7 +106,7 @@ exports[`ArticleList snapshot test2 1`] = `
                公開
             </span>
             <span
-              css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+              class="emotion-2"
             >
                
               <time>
@@ -52,7 +118,7 @@ exports[`ArticleList snapshot test2 1`] = `
           <div>
             <div>
               <ul
-                css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                class="emotion-4"
               >
                 <li>
                   <a
@@ -100,7 +166,7 @@ exports[`ArticleList snapshot test2 1`] = `
     >
       <article>
         <div
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-0"
         >
           <a
             aria-label="記事へのリンク"
@@ -110,11 +176,11 @@ exports[`ArticleList snapshot test2 1`] = `
           </a>
         </div>
         <div
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-1"
         >
           <div>
             <span
-              css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+              class="emotion-2"
             >
               <time>
                 2022年1月1日
@@ -122,7 +188,7 @@ exports[`ArticleList snapshot test2 1`] = `
                公開
             </span>
             <span
-              css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+              class="emotion-2"
             >
                
               <time>
@@ -134,7 +200,7 @@ exports[`ArticleList snapshot test2 1`] = `
           <div>
             <div>
               <ul
-                css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                class="emotion-4"
               >
                 <li>
                   <a
@@ -182,7 +248,7 @@ exports[`ArticleList snapshot test2 1`] = `
     >
       <article>
         <div
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-0"
         >
           <a
             aria-label="記事へのリンク"
@@ -192,11 +258,11 @@ exports[`ArticleList snapshot test2 1`] = `
           </a>
         </div>
         <div
-          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          class="emotion-1"
         >
           <div>
             <span
-              css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+              class="emotion-2"
             >
               <time>
                 2022年1月1日
@@ -204,7 +270,7 @@ exports[`ArticleList snapshot test2 1`] = `
                公開
             </span>
             <span
-              css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+              class="emotion-2"
             >
                
               <time>
@@ -216,7 +282,7 @@ exports[`ArticleList snapshot test2 1`] = `
           <div>
             <div>
               <ul
-                css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                class="emotion-4"
               >
                 <li>
                   <a

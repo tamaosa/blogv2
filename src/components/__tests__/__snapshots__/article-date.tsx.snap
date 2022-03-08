@@ -2,8 +2,13 @@
 
 exports[`ArticleDate snapshot test1 1`] = `
 <DocumentFragment>
-  <span
-    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+  .emotion-0 {
+  display: inline-block;
+  margin-right: 0.375rem;
+}
+
+<span
+    class="emotion-0"
   >
     <time>
       2022年1月1日
@@ -15,16 +20,26 @@ exports[`ArticleDate snapshot test1 1`] = `
 
 exports[`ArticleDate snapshot test2 1`] = `
 <DocumentFragment>
-  <span
-    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+  .emotion-0 {
+  display: inline-block;
+  margin-right: 0.375rem;
+}
+
+<span
+    class="emotion-0"
   >
     <time>
       2022年1月1日
     </time>
      公開
   </span>
-  <span
-    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+  .emotion-0 {
+  display: inline-block;
+  margin-right: 0.375rem;
+}
+
+<span
+    class="emotion-0"
   >
      
     <time>

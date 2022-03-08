@@ -2,9 +2,14 @@
 
 exports[`Ad snapshot test 1`] = `
 <DocumentFragment>
-  <ins
-    class="adsbygoogle"
-    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+  .emotion-0 {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+<ins
+    class="adsbygoogle emotion-0"
     data-ad-format="auto"
     data-full-width-responsive="true"
   />

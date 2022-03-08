@@ -2,7 +2,7 @@ import React from "react"
 import { render } from "@testing-library/react"
 import Tags from "../tags"
 
-describe("ArticleLink", () => {
+describe("Tags", () => {
   it("snapshot test1", () => {
     const { asFragment } = render(<Tags />)
     expect(asFragment()).toMatchSnapshot()

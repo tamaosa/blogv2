@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ArticleLink snapshot test1 1`] = `
+exports[`Tags snapshot test1 1`] = `
 <DocumentFragment>
   <div>
     <ul
@@ -10,7 +10,7 @@ exports[`ArticleLink snapshot test1 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ArticleLink snapshot test2 1`] = `
+exports[`Tags snapshot test2 1`] = `
 <DocumentFragment>
   <div>
     <ul

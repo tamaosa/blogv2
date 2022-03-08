@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout snapshot test 1`] = `
+<DocumentFragment>
+  <div
+    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+  >
+    <header
+      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+    >
+      <div
+        css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+      >
+        <a
+          href="/"
+        >
+          siteTitle
+        </a>
+      </div>
+      <div
+        css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+      >
+        <button>
+          🌞
+        </button>
+      </div>
+    </header>
+    <main />
+    <footer>
+      <div
+        css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+      >
+        <div
+          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+        >
+          <div
+            css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          />
+          <div
+            css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+          >
+            <span>
+              tamaosa
+            </span>
+            <a
+              aria-label="GitHubアカウント"
+              href="https://github.com/github"
+              rel="external noopener"
+              target="_blank"
+            >
+              <span
+                css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+              >
+                <i
+                  class="fa"
+                />
+              </span>
+            </a>
+            <a
+              aria-label="Twitterアカウント"
+              href="https://twitter.com/twitter"
+              rel="external noopener"
+              target="_blank"
+            >
+              <span
+                css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+              >
+                <i
+                  class="fa"
+                />
+              </span>
+            </a>
+            <div>
+              summary
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+      >
+        <small>
+          <a
+            href="/privacy-policy"
+          >
+            Privacy Policy
+          </a>
+        </small>
+        <small>
+          Built with 
+          <a
+            href="https://www.gatsbyjs.com"
+            rel="external noopener"
+            target="_blank"
+          >
+            Gatsby
+          </a>
+          , © 2019 
+          <a
+            href="https://www.tamaosa.com"
+          >
+            tamaosa
+          </a>
+        </small>
+      </div>
+    </footer>
+  </div>
+</DocumentFragment>
+`;

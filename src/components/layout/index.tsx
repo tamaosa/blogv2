@@ -17,31 +17,28 @@ const layoutStyle = css`
     margin: 0 auto;
     width: ${rhythm(contentWidth)};
   }
-`
 
-const headerStyle = css`
-  margin-top: ${rhythm(1 / 4)};
-`
-const mainStyle = css`
-  flex: 1;
-  margin-top: ${rhythm(3 / 2)};
-  margin-bottom: ${rhythm(1 / 4)};
-`
+  & > header {
+    margin-top: ${rhythm(1 / 4)};
+  }
 
-const footerStyle = css`
-  margin-top: ${rhythm(1 / 4)};
+  & > main {
+    flex: 1;
+    margin-top: ${rhythm(3 / 2)};
+    margin-bottom: ${rhythm(1 / 4)};
+  }
+
+  & > footer {
+    margin-top: ${rhythm(1 / 4)};
+  }
 `
 
 const Layout: React.FC = ({ children }) => (
   <div css={layoutStyle}>
     <GlobalStyle />
-    <div css={headerStyle}>
-      <Header />
-    </div>
-    <main css={mainStyle}>{children}</main>
-    <div css={footerStyle}>
-      <Footer />
-    </div>
+    <Header />
+    <main>{children}</main>
+    <Footer />
   </div>
 )
 

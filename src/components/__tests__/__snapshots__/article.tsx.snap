@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article snapshot test 1`] = `
+<DocumentFragment>
+  <article
+    itemscope=""
+    itemtype="http://schema.org/Article"
+  >
+    <header
+      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+    >
+      <h1
+        itemprop="headline"
+      >
+        title
+      </h1>
+      <div>
+        <ul
+          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+        >
+          <li>
+            <a
+              href="/tags/tag1/"
+            >
+              #tag1
+            </a>
+          </li>
+          <li>
+            <a
+              href="/tags/tag2/"
+            >
+              #tag2
+            </a>
+          </li>
+          <li>
+            <a
+              href="/tags/tag3/"
+            >
+              #tag3
+            </a>
+          </li>
+          <li>
+            <a
+              href="/tags/tag4/"
+            >
+              #tag4
+            </a>
+          </li>
+          <li>
+            <a
+              href="/tags/tag5/"
+            >
+              #tag5
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <span
+          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+        >
+          <time>
+            2022年1月1日
+          </time>
+           公開
+        </span>
+        <span
+          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+        >
+           
+          <time>
+            2022年12月31日
+          </time>
+           更新
+        </span>
+      </div>
+    </header>
+    <main
+      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+    >
+      <div>
+        body
+      </div>
+      <div>
+        <a
+          href="repository/tree/master/content/entries/slug1/index.mdx"
+          rel="external noopener"
+          target="_blank"
+        >
+          （GitHubで編集を提案）
+        </a>
+      </div>
+    </main>
+    <footer>
+      <ins
+        class="adsbygoogle"
+        css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+      <div>
+        <div
+          css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+        >
+          <span>
+            関連記事
+          </span>
+        </div>
+        <ol
+          style="list-style: none;"
+        >
+          <li
+            data-testid="article-link"
+          >
+            <article>
+              <div
+                css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+              >
+                <a
+                  aria-label="記事へのリンク"
+                  href="/slug2/"
+                >
+                  title
+                </a>
+              </div>
+              <div
+                css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+              >
+                <div>
+                  <span
+                    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                  >
+                    <time>
+                      2022年1月1日
+                    </time>
+                     公開
+                  </span>
+                  <span
+                    css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                  >
+                     
+                    <time>
+                      2022年12月31日
+                    </time>
+                     更新
+                  </span>
+                </div>
+                <div>
+                  <div>
+                    <ul
+                      css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+                    >
+                      <li>
+                        <a
+                          href="/tags/tag1/"
+                        >
+                          #tag1
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/tags/tag2/"
+                        >
+                          #tag2
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/tags/tag3/"
+                        >
+                          #tag3
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/tags/tag4/"
+                        >
+                          #tag4
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/tags/tag5/"
+                        >
+                          #tag5
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ol>
+      </div>
+      <div
+        css="You have tried to stringify object returned from \`css\` function. It isn't supposed to be used directly (e.g. as value of the \`className\` prop), but rather handed to emotion so it can handle it (e.g. as value of \`css\` prop)."
+      >
+        <ul>
+          <li>
+            <a
+              href="/slug3/"
+              rel="prev"
+            >
+              ← title
+            </a>
+          </li>
+          <li>
+            <a
+              href="/slug4/"
+              rel="next"
+            >
+              title →
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </article>
+</DocumentFragment>
+`;

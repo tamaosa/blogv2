@@ -12,7 +12,7 @@ export const ArticleList: React.FC<Props> = ({ posts }) => {
     <ol style={{ listStyle: `none` }}>
       {posts.map(post => {
         return (
-          <li key={post.fields.slug}>
+          <li key={post.fields.slug} data-testid="article-link">
             <ArticleLink
               slug={post.fields.slug}
               title={post.frontmatter.title}

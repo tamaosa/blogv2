@@ -1,21 +1,12 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "yarn serve",
-      "url": [
-        "http://localhost:9000/",
-        "http://localhost:9000/2021/pytest-html-specification/",
-        "http://localhost:9000/tags/Python/"
-      ]
+      "staticDistDir": "./public",
+      "url": ["/", "/2021/pytest-html-specification/", "/tags/Python/"]
     }
   },
   "assert": {
-    "preset": "lighthouse:no-pwa",
-    "assertions": {
-      "canonical": "off",
-      "unused-javascript": "off",
-      "uses-http2": "off"
-    }
+    "preset": "lighthouse:no-pwa"
   },
   "upload": {
     "target": "temporary-public-storage"

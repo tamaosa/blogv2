@@ -1,0 +1,8 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "yarn serve",
+      "url": ["http://localhost:9000/"]
+    }
+  }
+}

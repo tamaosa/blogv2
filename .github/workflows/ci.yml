@@ -21,6 +21,6 @@ jobs:
     - name: Build
       run: yarn build
     - name: Run lighthouse test
-        uses: treosh/lighthouse-ci-action@v9
-        with:
-          configPath: './.lighthouserc.json'
+      uses: treosh/lighthouse-ci-action@v9
+      with:
+        configPath: './.lighthouserc.json'

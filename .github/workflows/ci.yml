@@ -23,4 +23,5 @@ jobs:
     - name: Run lighthouse test
       uses: treosh/lighthouse-ci-action@v9
       with:
+        temporaryPublicStorage: true
         configPath: './.lighthouserc.json'

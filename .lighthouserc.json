@@ -1,0 +1,11 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "./public",
+      "url": ["/", "/2021/pytest-html-specification/", "/tags/Python/"]
+    }
+  },
+  "assert": {
+    "preset": "lighthouse:no-pwa"
+  }
+}

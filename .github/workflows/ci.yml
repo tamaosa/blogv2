@@ -1,13 +1,52 @@
 name: CI
 
-on: push
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'yarn'
     - name: Install modules
       run: yarn
-    - name: Run tests
+    - name: Lint
+      run: yarn lint
+  
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'yarn'
+    - name: Install modules
+      run: yarn
+    - name: Run unittest
       run: yarn test
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'yarn'
+    - name: Install modules
+      run: yarn
+    - name: Build
+      run: yarn build
+    - name: Run lighthouse
+      uses: treosh/lighthouse-ci-action@v9
+      with:
+        temporaryPublicStorage: true
+        configPath: './.lighthouserc.json'

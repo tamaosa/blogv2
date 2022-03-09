@@ -2,6 +2,7 @@
   "ci": {
     "collect": {
       "staticDistDir": "./public",
+      "psiStrategy": "desktop",
       "url": ["/", "/2021/pytest-html-specification/", "/tags/Python/"]
     }
   },

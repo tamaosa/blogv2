@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tags snapshot test1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0;
+}
+
+.emotion-0 li {
+  margin: 0 0.375rem 0 0;
+}
+
+.emotion-0 a {
+  color: var(--fg);
+  border: solid 2px var(--fg);
+  border-radius: 10px;
+  padding: 0.1875rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-0 a:hover {
+  color: var(--bg);
+  background: var(--fg-title);
+  border: solid 2px var(--fg-title);
+}
+
+<div>
+    <ul
+      class="emotion-0"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Tags snapshot test2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0;
+}
+
+.emotion-0 li {
+  margin: 0 0.375rem 0 0;
+}
+
+.emotion-0 a {
+  color: var(--fg);
+  border: solid 2px var(--fg);
+  border-radius: 10px;
+  padding: 0.1875rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-0 a:hover {
+  color: var(--bg);
+  background: var(--fg-title);
+  border: solid 2px var(--fg-title);
+}
+
+<div>
+    <ul
+      class="emotion-0"
+    >
+      <li>
+        <a
+          href="/tags/tag1/"
+        >
+          #tag1
+        </a>
+      </li>
+      <li>
+        <a
+          href="/tags/tag2/"
+        >
+          #tag2
+        </a>
+      </li>
+      <li>
+        <a
+          href="/tags/tag3/"
+        >
+          #tag3
+        </a>
+      </li>
+      <li>
+        <a
+          href="/tags/tag4/"
+        >
+          #tag4
+        </a>
+      </li>
+      <li>
+        <a
+          href="/tags/tag5/"
+        >
+          #tag5
+        </a>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;

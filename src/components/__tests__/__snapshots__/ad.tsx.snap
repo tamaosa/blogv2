@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ad snapshot test 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+<ins
+    class="adsbygoogle emotion-0"
+    data-ad-format="auto"
+    data-full-width-responsive="true"
+  />
+</DocumentFragment>
+`;

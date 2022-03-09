@@ -1,40 +1,32 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-import { css } from "@emotion/react"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { EntryItem, EntryItemType } from "../components/article/entry-item"
+import { ArticleList } from "../components/article-list"
+import { Mdx } from "../types/mdx"
 
 type Props = {
   data: {
     allMdx: {
-      nodes: Array<EntryItemType>
+      nodes: Array<Mdx<"title" | "published" | "updated" | "tags">>
     }
   }
 }
 
-const BlogIndex: React.FC<Props> = ({ data }) => {
+const Home: React.FC<Props> = ({ data }) => {
   const posts = data.allMdx.nodes
 
   return (
     <Layout>
       <SEO title="All posts" />
       <h1>Home</h1>
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          return (
-            <li key={post.fields.slug}>
-              <EntryItem {...post} />
-            </li>
-          )
-        })}
-      </ol>
+      <ArticleList posts={posts} />
     </Layout>
   )
 }
 
-export default BlogIndex
+export default Home
 
 export const pageQuery = graphql`
   query {
@@ -43,7 +35,7 @@ export const pageQuery = graphql`
       filter: { fields: { collection: { eq: "entries" } } }
     ) {
       nodes {
-        ...EntryItems
+        ...ArticleLink
       }
     }
   }

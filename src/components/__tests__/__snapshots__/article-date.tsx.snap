@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleDate snapshot test1 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: inline-block;
+  margin-right: 0.375rem;
+}
+
+<span
+    class="emotion-0"
+  >
+    <time>
+      2022年1月1日
+    </time>
+     公開
+  </span>
+</DocumentFragment>
+`;
+
+exports[`ArticleDate snapshot test2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: inline-block;
+  margin-right: 0.375rem;
+}
+
+<span
+    class="emotion-0"
+  >
+    <time>
+      2022年1月1日
+    </time>
+     公開
+  </span>
+  .emotion-0 {
+  display: inline-block;
+  margin-right: 0.375rem;
+}
+
+<span
+    class="emotion-0"
+  >
+     
+    <time>
+      2022年12月31日
+    </time>
+     更新
+  </span>
+</DocumentFragment>
+`;

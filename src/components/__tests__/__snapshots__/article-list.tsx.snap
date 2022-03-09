@@ -1,0 +1,330 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleList snapshot test1 1`] = `
+<DocumentFragment>
+  <ol
+    style="list-style: none;"
+  />
+</DocumentFragment>
+`;
+
+exports[`ArticleList snapshot test2 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  font-size: 1.29684rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.emotion-0 a {
+  color: var(--fg-title);
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 0.8409rem;
+  margin: 0.375rem 0 0.75rem 0;
+}
+
+.emotion-2 {
+  display: inline-block;
+  margin-right: 0.375rem;
+}
+
+.emotion-4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0;
+}
+
+.emotion-4 li {
+  margin: 0 0.375rem 0 0;
+}
+
+.emotion-4 a {
+  color: var(--fg);
+  border: solid 2px var(--fg);
+  border-radius: 10px;
+  padding: 0.1875rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-4 a:hover {
+  color: var(--bg);
+  background: var(--fg-title);
+  border: solid 2px var(--fg-title);
+}
+
+<ol
+    style="list-style: none;"
+  >
+    <li
+      data-testid="article-link"
+    >
+      <article>
+        <div
+          class="emotion-0"
+        >
+          <a
+            aria-label="記事へのリンク"
+            href="/slug1/"
+          >
+            title
+          </a>
+        </div>
+        <div
+          class="emotion-1"
+        >
+          <div>
+            <span
+              class="emotion-2"
+            >
+              <time>
+                2022年1月1日
+              </time>
+               公開
+            </span>
+            <span
+              class="emotion-2"
+            >
+               
+              <time>
+                2022年12月31日
+              </time>
+               更新
+            </span>
+          </div>
+          <div>
+            <div>
+              <ul
+                class="emotion-4"
+              >
+                <li>
+                  <a
+                    href="/tags/tag1/"
+                  >
+                    #tag1
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag2/"
+                  >
+                    #tag2
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag3/"
+                  >
+                    #tag3
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag4/"
+                  >
+                    #tag4
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag5/"
+                  >
+                    #tag5
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+    </li>
+    <li
+      data-testid="article-link"
+    >
+      <article>
+        <div
+          class="emotion-0"
+        >
+          <a
+            aria-label="記事へのリンク"
+            href="/slug2/"
+          >
+            title
+          </a>
+        </div>
+        <div
+          class="emotion-1"
+        >
+          <div>
+            <span
+              class="emotion-2"
+            >
+              <time>
+                2022年1月1日
+              </time>
+               公開
+            </span>
+            <span
+              class="emotion-2"
+            >
+               
+              <time>
+                2022年12月31日
+              </time>
+               更新
+            </span>
+          </div>
+          <div>
+            <div>
+              <ul
+                class="emotion-4"
+              >
+                <li>
+                  <a
+                    href="/tags/tag1/"
+                  >
+                    #tag1
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag2/"
+                  >
+                    #tag2
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag3/"
+                  >
+                    #tag3
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag4/"
+                  >
+                    #tag4
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag5/"
+                  >
+                    #tag5
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+    </li>
+    <li
+      data-testid="article-link"
+    >
+      <article>
+        <div
+          class="emotion-0"
+        >
+          <a
+            aria-label="記事へのリンク"
+            href="/slug3/"
+          >
+            title
+          </a>
+        </div>
+        <div
+          class="emotion-1"
+        >
+          <div>
+            <span
+              class="emotion-2"
+            >
+              <time>
+                2022年1月1日
+              </time>
+               公開
+            </span>
+            <span
+              class="emotion-2"
+            >
+               
+              <time>
+                2022年12月31日
+              </time>
+               更新
+            </span>
+          </div>
+          <div>
+            <div>
+              <ul
+                class="emotion-4"
+              >
+                <li>
+                  <a
+                    href="/tags/tag1/"
+                  >
+                    #tag1
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag2/"
+                  >
+                    #tag2
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag3/"
+                  >
+                    #tag3
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag4/"
+                  >
+                    #tag4
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tags/tag5/"
+                  >
+                    #tag5
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+    </li>
+  </ol>
+</DocumentFragment>
+`;

@@ -1,7 +1,7 @@
 import React from "react"
 import { css } from "@emotion/react"
 
-import { rhythm } from "../../utils/typography"
+import { rhythm } from "../utils/typography"
 
 const format = (d: Date) => {
   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`

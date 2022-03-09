@@ -3,7 +3,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import { css, keyframes } from "@emotion/react"
 import useDarkMode from "use-dark-mode"
 
-import { rhythm, scale } from "../../utils/typography"
+import { scale } from "../../utils/typography"
 
 const headerStyle = css`
   display: flex;

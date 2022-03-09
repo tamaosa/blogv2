@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bio snapshot test 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-flow: row nowrap;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+
+.emotion-1 {
+  margin: 0 0.75rem 0 0;
+}
+
+.emotion-2 {
+  margin: 0;
+}
+
+.emotion-2 span {
+  font-weight: bold;
+}
+
+.emotion-2 a {
+  color: var(--fg);
+}
+
+.emotion-2 div {
+  margin: 0;
+  font-size: 0.917rem;
+  line-height: 1.5rem;
+}
+
+.emotion-3 {
+  display: inline-block;
+  width: 1.125rem;
+  margin-left: 0.375rem;
+}
+
+<div
+    class="emotion-0"
+  >
+    <div
+      class="emotion-1"
+    />
+    <div
+      class="emotion-2"
+    >
+      <span>
+        tamaosa
+      </span>
+      <a
+        aria-label="GitHubアカウント"
+        href="https://github.com/github"
+        rel="external noopener"
+        target="_blank"
+      >
+        <span
+          class="emotion-3"
+        >
+          <i
+            class="fa"
+          />
+        </span>
+      </a>
+      <a
+        aria-label="Twitterアカウント"
+        href="https://twitter.com/twitter"
+        rel="external noopener"
+        target="_blank"
+      >
+        <span
+          class="emotion-3"
+        >
+          <i
+            class="fa"
+          />
+        </span>
+      </a>
+      <div>
+        summary
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

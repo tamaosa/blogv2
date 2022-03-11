@@ -1258,10 +1258,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/kosugi-maru@4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/kosugi-maru/-/kosugi-maru-4.5.2.tgz#34342a0d8c5c07b89b69578104e782e0f5eb0e58"
-  integrity sha512-sYb27yJs0mDwDCOIY7X6EY1DDy0aFoBQTY0KvQ+wH9eqq/4qBSB03eEul5svM1JTQ9kGwOVszkMjyHIM9IRqIQ==
+"@fontsource/kosugi-maru@4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/kosugi-maru/-/kosugi-maru-4.5.3.tgz#cbc13fd9cfb10b814afb4249a58cbbce15e7031a"
+  integrity sha512-wlpPf0NX3yeWZBxExPQ9j9BUGQq6Ut0iMABeL4FMoJ3YNvJAuzjLrg0s85oT2AOS0k2tMSwkJLjvsaWDqd7xjA==
 
 "@fortawesome/fontawesome-common-types@^0.3.0":
   version "0.3.0"

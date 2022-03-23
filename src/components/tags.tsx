@@ -40,7 +40,9 @@ const Tags: React.FunctionComponent<Props> = ({ tags }) => {
         {tags &&
           tags.map(tag => (
             <li key={tag}>
-              <Link to={`/tags/${tag}/`}>#{tag}</Link>
+              <Link aria-label="タグへのリンク" to={`/tags/${tag}/`}>
+                #{tag}
+              </Link>
             </li>
           ))}
       </ul>

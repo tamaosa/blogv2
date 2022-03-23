@@ -26,7 +26,9 @@ describe("Tags", () => {
     const tags = ["tag1", "tag2", "tag3", "tag4", "tag5"]
     const { container } = render(<Tags tags={tags} />)
     for (let tag of tags) {
-      expect(container.innerHTML).toMatch(`<a href="/tags/${tag}/">#${tag}</a>`)
+      expect(container.innerHTML).toMatch(
+        `<a aria-label="タグへのリンク" href="/tags/${tag}/">#${tag}</a>`
+      )
     }
   })
 })

@@ -97,7 +97,9 @@ describe("ArticleLink", () => {
       />
     )
     for (let tag of tags) {
-      expect(container.innerHTML).toMatch(`<a href="/tags/${tag}/">#${tag}</a>`)
+      expect(container.innerHTML).toMatch(
+        `<a aria-label="タグへのリンク" href="/tags/${tag}/">#${tag}</a>`
+      )
     }
   })
 })

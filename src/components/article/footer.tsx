@@ -42,7 +42,7 @@ const ArticleFooter: React.FC<Props> = ({
   nextPost,
 }) => {
   return (
-    <footer>
+    <aside>
       <Ad path={post.fields.slug} />
       {relatedPosts.length > 0 && (
         <div>
@@ -70,7 +70,7 @@ const ArticleFooter: React.FC<Props> = ({
           </li>
         </ul>
       </div>
-    </footer>
+    </aside>
   )
 }
 

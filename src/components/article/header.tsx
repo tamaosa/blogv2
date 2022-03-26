@@ -21,13 +21,13 @@ const ArticleHeader: React.FC<Frontmatter> = ({
   updated,
 }) => {
   return (
-    <header css={style}>
+    <div css={style}>
       <h1 itemProp="headline">{title}</h1>
       <Tags tags={tags} />
       <div>
         <ArticleDate published={published} updated={updated} />
       </div>
-    </header>
+    </div>
   )
 }
 

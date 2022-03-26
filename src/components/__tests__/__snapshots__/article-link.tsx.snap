@@ -325,6 +325,7 @@ exports[`ArticleLink snapshot test3 1`] = `
           >
             <li>
               <a
+                aria-label="タグへのリンク"
                 href="/tags/tag1/"
               >
                 #tag1
@@ -332,6 +333,7 @@ exports[`ArticleLink snapshot test3 1`] = `
             </li>
             <li>
               <a
+                aria-label="タグへのリンク"
                 href="/tags/tag2/"
               >
                 #tag2
@@ -339,6 +341,7 @@ exports[`ArticleLink snapshot test3 1`] = `
             </li>
             <li>
               <a
+                aria-label="タグへのリンク"
                 href="/tags/tag3/"
               >
                 #tag3
@@ -346,6 +349,7 @@ exports[`ArticleLink snapshot test3 1`] = `
             </li>
             <li>
               <a
+                aria-label="タグへのリンク"
                 href="/tags/tag4/"
               >
                 #tag4
@@ -353,6 +357,7 @@ exports[`ArticleLink snapshot test3 1`] = `
             </li>
             <li>
               <a
+                aria-label="タグへのリンク"
                 href="/tags/tag5/"
               >
                 #tag5

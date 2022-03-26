@@ -57,7 +57,7 @@ const Article: React.FC<Props> = ({
         published={post.frontmatter.published}
         updated={post.frontmatter?.updated}
       />
-      <main css={style}>
+      <div css={style}>
         <MDXRenderer>{post.body}</MDXRenderer>
         <div>
           <a
@@ -68,7 +68,7 @@ const Article: React.FC<Props> = ({
             （GitHubで編集を提案）
           </a>
         </div>
-      </main>
+      </div>
       <ArticleFooter
         post={post}
         relatedPosts={relatedPosts}

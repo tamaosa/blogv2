@@ -33,6 +33,27 @@ jobs:
     - name: Run unittest
       run: yarn test
 
+  e2etest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        cache: 'yarn'
+    - name: Install modules
+      run: yarn
+    - name: Build
+      run: yarn build
+    - name: Run e2etest
+      run: yarn test:e2e:ci
+    - name: Save video
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: Cypress videos
+        path: cypress/videos
+
   lighthouse:
     runs-on: ubuntu-latest
     steps:

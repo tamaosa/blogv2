@@ -122,6 +122,7 @@ exports[`ArticleList snapshot test2 1`] = `
               >
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag1/"
                   >
                     #tag1
@@ -129,6 +130,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag2/"
                   >
                     #tag2
@@ -136,6 +138,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag3/"
                   >
                     #tag3
@@ -143,6 +146,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag4/"
                   >
                     #tag4
@@ -150,6 +154,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag5/"
                   >
                     #tag5
@@ -204,6 +209,7 @@ exports[`ArticleList snapshot test2 1`] = `
               >
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag1/"
                   >
                     #tag1
@@ -211,6 +217,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag2/"
                   >
                     #tag2
@@ -218,6 +225,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag3/"
                   >
                     #tag3
@@ -225,6 +233,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag4/"
                   >
                     #tag4
@@ -232,6 +241,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag5/"
                   >
                     #tag5
@@ -286,6 +296,7 @@ exports[`ArticleList snapshot test2 1`] = `
               >
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag1/"
                   >
                     #tag1
@@ -293,6 +304,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag2/"
                   >
                     #tag2
@@ -300,6 +312,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag3/"
                   >
                     #tag3
@@ -307,6 +320,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag4/"
                   >
                     #tag4
@@ -314,6 +328,7 @@ exports[`ArticleList snapshot test2 1`] = `
                 </li>
                 <li>
                   <a
+                    aria-label="タグへのリンク"
                     href="/tags/tag5/"
                   >
                     #tag5

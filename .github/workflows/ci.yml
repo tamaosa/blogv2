@@ -48,7 +48,7 @@ jobs:
     - name: Run e2etest
       run: yarn test:e2e:ci
     - name: Save video
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       if: always()
       with:
         name: Cypress videos

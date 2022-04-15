@@ -63,7 +63,7 @@
     "@emotion/jest": "11.9.1",
     "@testing-library/cypress": "^8.0.2",
     "@testing-library/jest-dom": "5.16.4",
-    "@testing-library/react": "12.1.4",
+    "@testing-library/react": "12.1.5",
     "@types/jest": "^27.4.0",
     "@types/node": "16.11.25",
     "@types/react": "17.0.44",

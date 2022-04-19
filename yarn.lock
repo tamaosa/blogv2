@@ -7785,12 +7785,12 @@ gatsby-plugin-typography@4.12.1:
   dependencies:
     "@babel/runtime" "^7.15.4"
 
-gatsby-plugin-use-dark-mode@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-use-dark-mode/-/gatsby-plugin-use-dark-mode-1.4.0.tgz#638286ac43b6b5dbb1b3919d2565d8884ecfa69f"
-  integrity sha512-FpNLBXlT02Bye/7fZfkrYT+92wFwKYQT/OVO/4ee5OcmgUOxL+jgRUAChvVf8KaNoQ5WUizOGU7SeJpMd7/+hA==
+gatsby-plugin-use-dark-mode@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-use-dark-mode/-/gatsby-plugin-use-dark-mode-1.5.0.tgz#57383e4d9abd1f8ab235b8c2b8de016a0b40116a"
+  integrity sha512-NwRgOVPGCxfL7ixKdfw5QqFjpYO1tXr11annjpDrD+Oom4IToV0WK7COlAMGes1md2s4/yZrbN5H/Wje1IV22g==
   dependencies:
-    prop-types "^15.7.2"
+    prop-types "^15.8.1"
     terser "^4.0.0"
 
 gatsby-plugin-utils@^1.0.0-next.0:

@@ -46,7 +46,17 @@ exports[`Bio snapshot test 1`] = `
   >
     <div
       class="emotion-1"
-    />
+    >
+      <img
+        alt="プロフィール画像"
+        height="72"
+        layout="fixed"
+        quality="95"
+        src="../../content/images/avator.png"
+        style="margin: 0px; padding: 0px; min-width: 50px; border-radius: 50%;"
+        width="72"
+      />
+    </div>
     <div
       class="emotion-2"
     >

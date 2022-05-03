@@ -1,5 +1,8 @@
 module.exports = {
   testEnvironment: `jsdom`,
+  testEnvironmentOptions: {
+    url: `http://localhost`,
+  },
   setupFilesAfterEnv: ["<rootDir>/setup-test-env.js"],
   transform: {
     "^.+\\.[jt]sx?$": "<rootDir>/jest-preprocess.js",
@@ -10,8 +13,6 @@ module.exports = {
     "@fortawesome/react-fontawesome": `<rootDir>/__mocks__/react-fontawesome.js`,
     "gatsby-plugin-mdx": `<rootDir>/__mocks__/gatsby-plugin-mdx.js`,
     ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": `<rootDir>/__mocks__/file-mock.js`,
-    "^gatsby-page-utils/(.*)$": `gatsby-page-utils/dist/$1`, // Workaround for https://github.com/facebook/jest/issues/9771
-    "^gatsby-core-utils/(.*)$": `gatsby-core-utils/dist/$1`, // Workaround for https://github.com/facebook/jest/issues/9771
   },
   testPathIgnorePatterns: [
     `node_modules`,
@@ -23,6 +24,5 @@ module.exports = {
   globals: {
     __PATH_PREFIX__: ``,
   },
-  testURL: `http://localhost`,
   setupFiles: [`<rootDir>/loadershim.js`],
 }

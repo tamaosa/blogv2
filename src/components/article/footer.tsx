@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { css } from "@emotion/react"
 
-import Ad from "../../components/ad"
+// import Ad from "../../components/ad"
 import { ArticleList } from "../../components/article-list"
 import { Mdx } from "../../types/mdx"
 import { scale, rhythm } from "../../utils/typography"
@@ -43,7 +43,7 @@ const ArticleFooter: React.FC<Props> = ({
 }) => {
   return (
     <aside>
-      <Ad path={post.fields.slug} />
+      {/* <Ad path={post.fields.slug} /> */}
       {relatedPosts.length > 0 && (
         <div>
           <div css={relatedStyle}>

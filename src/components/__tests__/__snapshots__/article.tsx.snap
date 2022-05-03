@@ -62,31 +62,25 @@ exports[`Article snapshot test 1`] = `
 }
 
 .emotion-5 {
-  display: block;
-  text-align: center;
-  margin-bottom: 0.75rem;
-}
-
-.emotion-6 {
   text-align: center;
   font-weight: bold;
   font-size: 1.18921rem;
   margin-bottom: 0.375rem;
 }
 
-.emotion-7 {
+.emotion-6 {
   font-size: 1.29684rem;
   font-weight: bold;
   line-height: 1;
 }
 
-.emotion-7 a {
+.emotion-6 a {
   color: var(--fg-title);
   -webkit-text-decoration: none;
   text-decoration: none;
 }
 
-.emotion-8 {
+.emotion-7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -103,7 +97,7 @@ exports[`Article snapshot test 1`] = `
   margin: 0.375rem 0 0.75rem 0;
 }
 
-.emotion-12 ul {
+.emotion-11 ul {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -120,7 +114,7 @@ exports[`Article snapshot test 1`] = `
   padding: 0;
 }
 
-.emotion-12 li:nth-of-type(2n) {
+.emotion-11 li:nth-of-type(2n) {
   margin-left: auto;
 }
 
@@ -219,14 +213,9 @@ exports[`Article snapshot test 1`] = `
       </div>
     </div>
     <aside>
-      <ins
-        class="adsbygoogle emotion-5"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
       <div>
         <div
-          class="emotion-6"
+          class="emotion-5"
         >
           <span>
             関連記事
@@ -240,7 +229,7 @@ exports[`Article snapshot test 1`] = `
           >
             <article>
               <div
-                class="emotion-7"
+                class="emotion-6"
               >
                 <a
                   aria-label="記事へのリンク"
@@ -250,7 +239,7 @@ exports[`Article snapshot test 1`] = `
                 </a>
               </div>
               <div
-                class="emotion-8"
+                class="emotion-7"
               >
                 <div>
                   <span
@@ -325,7 +314,7 @@ exports[`Article snapshot test 1`] = `
         </ol>
       </div>
       <div
-        class="emotion-12"
+        class="emotion-11"
       >
         <ul>
           <li>

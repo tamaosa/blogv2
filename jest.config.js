@@ -21,7 +21,7 @@ module.exports = {
     `<rootDir>.*/public`,
     `cypress`,
   ],
-  transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
+  transformIgnorePatterns: [`node_modules/(?!(gatsby|gatsby-script)/)`],
   globals: {
     __PATH_PREFIX__: ``,
   },

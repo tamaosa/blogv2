@@ -44,7 +44,7 @@
     "gatsby-source-filesystem": "4.17.0",
     "gatsby-transformer-sharp": "4.17.0",
     "katex": "0.16.0",
-    "preact": "10.8.2",
+    "preact": "10.9.0",
     "preact-render-to-string": "5.2.0",
     "prismjs": "1.28.0",
     "react": "17.0.2",

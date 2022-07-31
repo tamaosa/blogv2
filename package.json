@@ -8,8 +8,8 @@
     "url": "https://github.com/tamaosa/blogv2/issues"
   },
   "dependencies": {
-    "@emotion/react": "11.9.3",
-    "@emotion/styled": "11.9.3",
+    "@emotion/react": "11.10.0",
+    "@emotion/styled": "11.10.0",
     "@fontsource/kosugi-maru": "4.5.7",
     "@fortawesome/fontawesome-svg-core": "6.1.2",
     "@fortawesome/free-brands-svg-icons": "6.1.2",
@@ -59,8 +59,8 @@
     "use-dark-mode": "2.3.1"
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "11.9.5",
-    "@emotion/jest": "11.9.4",
+    "@emotion/babel-plugin": "11.10.0",
+    "@emotion/jest": "11.10.0",
     "@testing-library/cypress": "8.0.3",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "12.1.5",

@@ -62,7 +62,7 @@
     "@emotion/babel-plugin": "11.10.0",
     "@emotion/jest": "11.10.0",
     "@testing-library/cypress": "8.0.3",
-    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "12.1.5",
     "@types/jest": "28.1.6",
     "@types/node": "16.11.47",

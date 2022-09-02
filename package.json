@@ -8,8 +8,8 @@
     "url": "https://github.com/tamaosa/blogv2/issues"
   },
   "dependencies": {
-    "@emotion/react": "11.10.0",
-    "@emotion/styled": "11.10.0",
+    "@emotion/react": "11.10.4",
+    "@emotion/styled": "11.10.4",
     "@fontsource/kosugi-maru": "4.5.8",
     "@fortawesome/fontawesome-svg-core": "6.1.2",
     "@fortawesome/free-brands-svg-icons": "6.1.2",

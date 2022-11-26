@@ -7680,10 +7680,10 @@ gatsby-plugin-typography@4.24.0:
   dependencies:
     "@babel/runtime" "^7.15.4"
 
-gatsby-plugin-use-dark-mode@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-use-dark-mode/-/gatsby-plugin-use-dark-mode-1.6.0.tgz#50a24d4990ee475a4b7da5a9680c32156896cefb"
-  integrity sha512-oW+y6zBUqTXmVLge0ND7a1Vb5CXC+3Mz5FSBv+ofqQkZ4kz0V89FuEXzAW9w46nw3ggZDnrA+UPR3v1ORO2+rg==
+gatsby-plugin-use-dark-mode@1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-use-dark-mode/-/gatsby-plugin-use-dark-mode-1.6.1.tgz#b860a86e1ce3623ef9ac15f9bd5c6c586f124498"
+  integrity sha512-ZMPxoKb5NiwNCkrpx1iDjXMp2IQzAancHidu5LdHt3I1aiFXpou4sIui56Lv0NDukQiuuj9nTZ5R0ypjT1SSwA==
   dependencies:
     esbuild "~0.15.12"
 

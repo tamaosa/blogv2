@@ -71,7 +71,7 @@
     "@types/react-helmet": "6.1.8",
     "@types/testing-library__jest-dom": "5.14.9",
     "@types/typography": "0.16.4",
-    "axe-core": "4.6.3",
+    "axe-core": "4.8.2",
     "babel-jest": "28.1.3",
     "babel-preset-gatsby": "2.24.0",
     "cypress": "9.7.0",

@@ -3504,7 +3504,7 @@
   resolved "https://registry.yarnpkg.com/@use-it/event-listener/-/event-listener-0.1.7.tgz#443a9b6df87f2f2961b74d42997ce723a7078623"
   integrity sha512-hgfExDzUU9uTRTPDCpw2s9jWTxcxmpJya3fK5ADpf5VDpSy8WYwY/kh28XE0tUcbsljeP8wfan48QvAQTSSa3Q==
 
-"@vercel/webpack-asset-relocator-loader@^1.7.0":
+"@vercel/webpack-asset-relocator-loader@1.7.3":
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/@vercel/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-1.7.3.tgz#e65ca1fd9feb045039788f9b4710e5acc84b01b0"
   integrity sha512-vizrI18v8Lcb1PmNNUBz7yxPxxXoOeuaVEjTG9MjvDrphjiSxFZrRJ5tIghk+qdLFRCXI5HBCshgobftbmrC5g==
@@ -8210,10 +8210,10 @@ gatsby-worker@^1.25.0:
     "@babel/core" "^7.15.5"
     "@babel/runtime" "^7.15.4"
 
-gatsby@4.25.7:
-  version "4.25.7"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-4.25.7.tgz#56a0c7f9e25fcf895864d88fd648f97e26dd560f"
-  integrity sha512-kspM1XokxDw2YqC2hkPKQTfWSNSq/AnY8PNYSrUM+MCsyIKFuGqSVchNonZN1g8/nCoh4jQpBYXH5Uw2Hrs6Sw==
+gatsby@4.25.9:
+  version "4.25.9"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-4.25.9.tgz#22240d315b00f127968a934955cb2006bc82e489"
+  integrity sha512-/0/C4mesu+afcoQ+SCmTJQJrZLS7cUIgqotxPQ61+hhvE/DoU8j6a61qM1jOp1/Bwh+FQBpDXuFxGFAF3yNBig==
   dependencies:
     "@babel/code-frame" "^7.14.0"
     "@babel/core" "^7.15.5"
@@ -8241,7 +8241,7 @@ gatsby@4.25.7:
     "@types/http-proxy" "^1.17.7"
     "@typescript-eslint/eslint-plugin" "^4.33.0"
     "@typescript-eslint/parser" "^4.33.0"
-    "@vercel/webpack-asset-relocator-loader" "^1.7.0"
+    "@vercel/webpack-asset-relocator-loader" "1.7.3"
     acorn-loose "^8.3.0"
     acorn-walk "^8.2.0"
     address "1.1.2"
